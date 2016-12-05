@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <!--<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />-->
+    <title>百度用户服务中心-首页</title>
+    <link rel="shortcut icon" href="/resources/images/favicon.ico"/>
+    <link type="text/css" rel="stylesheet" href="/resources/css/normalize.css" />
+    <link type="text/css" rel="stylesheet" href="/resources/css/global.css" />
+    <!-- <link type="text/css" rel="stylesheet" href="/resources/css/bd-selector.css"/> -->
+    <script type="text/javascript" src="/resources/js/lib/tangram-2.0.2.1.js"></script>
+    <script type="text/javascript" src="/resources/js/lib/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="https://passport.baidu.com/passApi/js/uni_login_wrapper.js?cdnversion=201612021902"></script>
+    <script type="text/javascript" src="/resources/js/common.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            login.init('https://passport.baidu.com', 'http://help.baidu.com/resources/html/jump.html', 'service_feedback');
+        });
+    </script>
+    <link type="text/css" rel="stylesheet" href="/resources/css/index.css" />
+</head>
+<body>
+
+<div class="header clear">
+    <h1 class="logo"><a href="http://help.baidu.com" target="_blank" class="logobd">百度</a><a href="/index" class="logo-serv">服务中心</a>
+        <a href="/index"><img src="/resources/images/logo2x.png"/></a>
+    </h1>
+    <form class="search-form" action="/search" name="f" id="searchForm">
+        <input id="search_txt" value="请简单描述您遇到的问题" placeholder="请简单描述您遇到的问题" type="text" class="search-key" x-webkit-speech="true"  name="keywords" autocomplete="off"/>
+        <input id="searchbutton" class="btn-search" type="submit" value=""/>
+        <ul id="searchSuggest" class="suggestion" style="display:none;">
+            <!--<li index="0"><span>帐号</span>不能自动登录怎么办</li>
+            <li index="1">登录百度<span>帐号</span>有什么作用呢？</li>
+            <li index="2">我的<span>帐号</span>被封了怎么办</li>
+            <li index="3">数字<span>帐号</span></li>
+            <li index="4">关注百度<span>帐号</span>管家微信号有什么用？</li>
+            <li index="5">怎样注册百度<span>帐号</span>？</li>
+            <li index="6">我的手机被绑定在了别的<span>帐号</span>上</li>
+            <li class="" index="7">我的<span>帐号</span>会被清空么</li>
+            <li class="" index="8">什么是<span>帐号</span>冻结？</li>
+            <li class="" index="9"><span>帐号</span>莫名发消息，被别人登录怎么办</li>
+            <li class="" index="9"><span>帐号</span>莫名发消息，被别人登录怎么办</li>-->
+        </ul>
+    </form>
+    <div class="loginfo">
+                <div class="unlogin">
+            <a href="#" id="btnLogin">登录</a>
+            <a href="https://passport.baidu.com/v2/?reg&tpl=service_feedback&u=">注册</a>
+        </div>
+            </div>
+</div>
+
+<div class="main-page" id="mainPage">
+    <div class="main">
+        <div class="banner">
+            <div class="banin">
+                选择需要服务的产品
+            </div>
+        </div>
+        <div class="top-list">
+            <div class="default-list">
+                <ul>
+                                        <li>
+                        <div class="default-icon">
+                            <a href="/question?prod_id=1"><img src="/resources/images/icon/wangye_74.png" /></a>
+                        </div>
+                        <div class="default-title">
+                            <a href="/question?prod_id=1" class="deft">百度搜索</a>
+                        </div>
+                    </li>
+                                        <li>
+                        <div class="default-icon">
+                            <a href="/question?prod_id=3"><img src="/resources/images/icon/tieba_65.png" /></a>
+                        </div>
+                        <div class="default-title">
+                            <a href="/question?prod_id=3" class="deft">贴吧</a>
+                        </div>
+                    </li>
+                                        <li>
+                        <div class="default-icon">
+                            <a href="/question?prod_id=4"><img src="/resources/images/icon/ditu_65.png" /></a>
+                        </div>
+                        <div class="default-title">
+                            <a href="/question?prod_id=4" class="deft">百度地图</a>
+                        </div>
+                    </li>
+                                        <li>
+                        <div class="default-icon">
+                            <a href="/question?prod_id=9"><img src="/resources/images/icon/zhidao_72.png" /></a>
+                        </div>
+                        <div class="default-title">
+                            <a href="/question?prod_id=9" class="deft">知道</a>
+                        </div>
+                    </li>
+                                        <li>
+                        <div class="default-icon">
+                            <a href="/question?prod_id=28"><img src="/resources/images/icon/passport_64.png" /></a>
+                        </div>
+                        <div class="default-title">
+                            <a href="/question?prod_id=28" class="deft">百度帐号</a>
+                        </div>
+                    </li>
+                                        <li>
+                        <div class="default-icon">
+                            <a href="/question?prod_id=10"><img src="/resources/images/icon/baike_65.png" /></a>
+                        </div>
+                        <div class="default-title">
+                            <a href="/question?prod_id=10" class="deft">百科</a>
+                        </div>
+                    </li>
+                                        <li>
+                        <div class="default-icon">
+                            <a href="/question?prod_id=29"><img src="/resources/images/icon/baiduyun_65.png" /></a>
+                        </div>
+                        <div class="default-title">
+                            <a href="/question?prod_id=29" class="deft">百度网盘</a>
+                        </div>
+                    </li>
+                                        <li>
+                        <div class="default-icon">
+                            <a href="/question?prod_id=25"><img src="/resources/images/icon/nuomi_65.png" /></a>
+                        </div>
+                        <div class="default-title">
+                            <a href="/question?prod_id=25" class="deft">百度糯米</a>
+                        </div>
+                    </li>
+                                        <li>
+                        <div class="default-icon">
+                            <a href="/question?prod_id=12"><img src="/resources/images/icon/wenku_65.png" /></a>
+                        </div>
+                        <div class="default-title">
+                            <a href="/question?prod_id=12" class="deft">文库</a>
+                        </div>
+                    </li>
+                                        <li>
+                        <div class="default-icon">
+                            <a href="/question?prod_id=6"><img src="/resources/images/icon/image_72.png" /></a>
+                        </div>
+                        <div class="default-title">
+                            <a href="/question?prod_id=6" class="deft">图片搜索</a>
+                        </div>
+                    </li>
+                                        <li>
+                        <div class="default-icon">
+                            <a href="/question?prod_id=22"><img src="/resources/images/icon/qianbao_65.png" /></a>
+                        </div>
+                        <div class="default-title">
+                            <a href="/question?prod_id=22" class="deft">百度钱包</a>
+                        </div>
+                    </li>
+                                        <li>
+                        <div class="default-icon">
+                            <a href="/question?prod_id=2"><img src="/resources/images/icon/shipin_65.png" /></a>
+                        </div>
+                        <div class="default-title">
+                            <a href="/question?prod_id=2" class="deft">视频搜索</a>
+                        </div>
+                    </li>
+                                    </ul>
+            </div>
+            <div class="prod-sel">
+            <div class="dft-sel" id="btnProdList">全部产品</div>
+            </div>
+            <div class="prod-nav-top">
+                <div class="prod-list-nav" id="proNav">
+                    <div class="prod-nav yahei">
+                        <ul>
+                                                        <li><a class="on" dataid="1" href="#1">搜索服务</a></li>
+			    <li class="line">|</li>			                                <li><a class="defcol" dataid="2" href="#2">导航服务</a></li>
+			    <li class="line">|</li>			                                <li><a class="defcol" dataid="3" href="#3">社区服务</a></li>
+			    <li class="line">|</li>			                                <li><a class="defcol" dataid="4" href="#4">游戏娱乐</a></li>
+			    <li class="line">|</li>			                                <li><a class="defcol" dataid="5" href="#5">站长与开发者服务</a></li>
+			    <li class="line">|</li>			                                <li><a class="defcol" dataid="6" href="#6">软件工具</a></li>
+			    <li class="line">|</li>			                                <li><a class="defcol" dataid="7" href="#7">其他服务</a></li>
+			    			                            </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="prod-list">
+                                <div class="prodtp-list clear" id="1" >
+                    <div class="prod-top yahei">
+                        <div class="prodtp-tl  deft fl">
+                            搜索服务
+                        </div>
+                        <div class="prodtp-tr gdesc fl">
+                            帮助您解决搜索海量资料、图片、视频、音乐、地图、新闻时遇到的问题
+                        </div>
+                    </div>
+                    <div class="focus-prod clear">
+                        <div class="dl-list">
+                                                                                                            <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=1">百度搜索</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=1"><img src="/resources/images/icon/wangye_74.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei">搜索海量网络资料资源</dd>
+                            </dl>
+                            
+
+                                                                                                            <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=2">视频搜索</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=2"><img src="/resources/images/icon/shipin_65.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei">搜索海量网络视频</dd>
+                            </dl>
+                            
+
+                                                                                                            <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=7">百度翻译</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=7"><img src="/resources/images/icon/fanyi_65.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei">轻松解决语言差异困扰</dd>
+                            </dl>
+                            
+
+                                                                            </div>
+                        <div class="dl-list">
+                                                                                    <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=18">百度音乐</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=18"><img src="/resources/images/icon/music_65.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei">搜索试听下载海量音乐</dd>
+                            </dl>
+                            
+
+                                                                                                            <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=4">百度地图</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=4"><img src="/resources/images/icon/ditu_65.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei">搜索功能完备的网络地图</dd>
+                            </dl>
+                            
+
+                                                                                                            <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=5">百度新闻</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=5"><img src="/resources/images/icon/xinwen_65.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei">搜索浏览最热新闻资讯</dd>
+                            </dl>
+                            
+
+                                                                            </div>
+                        <div class="dl-list">
+                                                                                    <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=6">图片搜索</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=6"><img src="/resources/images/icon/image_72.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei">搜索海量网络图片</dd>
+                            </dl>
+                            
+
+                                                                                                            <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=159">百度票务</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=159"><img src="/resources/images/icon/icon.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei">买低价放心票</dd>
+                            </dl>
+                            
+
+                                                                                                            <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=58">百度音乐人</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=58"><img src="/resources/images/icon/yinyueren_72.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei">发现最好的原创音乐</dd>
+                            </dl>
+                            
+
+                                                                            </div>
+                        <div class="dl-list">
+                                                                                    <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=171">百度传课</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=171"><img src="/resources/images/icon/chuanke_72.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei">百度在线教育平台</dd>
+                            </dl>
+                            
+
+                                                                                                            <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=69">百度儿童</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=69"><img src="/resources/images/icon/ertong_72.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei"></dd>
+                            </dl>
+                            
+
+                                                                                                            <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=8">百度词典</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=8"><img src="/resources/images/icon/cidian_57.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei"></dd>
+                            </dl>
+                            
+
+                                                                            </div>
+                        <div class="dl-list">
+                                                                                    <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=92">百度搜藏</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=92"><img src="/resources/images/icon/icon.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei"></dd>
+                            </dl>
+                            
+
+                                                                                                            <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=24">百小度</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=24"><img src="/resources/images/icon/icon.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei"></dd>
+                            </dl>
+                            
+
+                                                                                                            <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=14">百度医学</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=14"><img src="/resources/images/icon/icon.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei"></dd>
+                            </dl>
+                            
+
+                                                </div>
+                    </div>
+                </div>
+
+                                <div class="prodtp-list clear" id="2" >
+                    <div class="prod-top yahei">
+                        <div class="prodtp-tl  deft fl">
+                            导航服务
+                        </div>
+                        <div class="prodtp-tr gdesc fl">
+                            帮助您解决使用导航时遇到的问题
+                        </div>
+                    </div>
+                    <div class="focus-prod clear">
+                        <div class="dl-list">
+                                                                                                            <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=113">Hao123</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=113"><img src="/resources/images/icon/hao123_65.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei">网址导航</dd>
+                            </dl>
+                            
+
+                                                                                                            <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=16">百度口碑</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=16"><img src="/resources/images/icon/koubei_72.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei">传播最真实的评论</dd>
+                            </dl>
+                            
+
+                                                </div>
+                    </div>
+                </div>
+
+                                <div class="prodtp-list clear" id="3" >
+                    <div class="prod-top yahei">
+                        <div class="prodtp-tl  deft fl">
+                            社区服务
+                        </div>
+                        <div class="prodtp-tr gdesc fl">
+                            帮助您更好地使用百度社区产品，解决您遇到的各种问题
+                        </div>
+                    </div>
+                    <div class="focus-prod clear">
+                        <div class="dl-list">
+                                                                                                            <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=12">文库</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=12"><img src="/resources/images/icon/wenku_65.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei">阅读、下载、分享文档</dd>
+                            </dl>
+                            
+
+                                                                                                            <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=10">百科</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=10"><img src="/resources/images/icon/baike_65.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei">查询贡献网络百科全书</dd>
+                            </dl>
+                            
+
+                                                                                                            <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=3">贴吧</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=3"><img src="/resources/images/icon/tieba_65.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei">自由分享话题参与讨论</dd>
+                            </dl>
+                            
+
+                                                                            </div>
+                        <div class="dl-list">
+                                                                                    <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=9">知道</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=9"><img src="/resources/images/icon/zhidao_72.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei">寻找答案、回答问题</dd>
+                            </dl>
+                            
+
+                                                                                                            <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=17">宝宝知道</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=17"><img src="/resources/images/icon/baobao_72.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei"></dd>
+                            </dl>
+                            
+
+                                                                                                            <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=31">拇指医生</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=31"><img src="/resources/images/icon/muzhi_64.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei">好医生就在身边</dd>
+                            </dl>
+                            
+
+                                                                            </div>
+                        <div class="dl-list">
+                                                                                    <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=13">经验</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=13"><img src="/resources/images/icon/jingyan_65.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei">实用生活指南</dd>
+                            </dl>
+                            
+
+                                                                                                            <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=22">百度钱包</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=22"><img src="/resources/images/icon/qianbao_65.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei">安全可信赖的支付工具</dd>
+                            </dl>
+                            
+
+                                                                                                            <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=117">百度旅游</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=117"><img src="/resources/images/icon/lvyou_65.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei">让旅行更简单</dd>
+                            </dl>
+                            
+
+                                                                            </div>
+                        <div class="dl-list">
+                                                                                    <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=27">百度相册</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=27"><img src="/resources/images/icon/xiangce_65.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei">超大容量的免费云相册</dd>
+                            </dl>
+                            
+
+                                                                                                            <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=147">百度众测</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=147"><img src="/resources/images/icon/icon.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei">用户体验中心</dd>
+                            </dl>
+                            
+
+                                                                                                            <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=25">百度糯米</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=25"><img src="/resources/images/icon/nuomi_65.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei">省钱更省心</dd>
+                            </dl>
+                            
+
+                                                                            </div>
+                        <div class="dl-list">
+                                                                                    <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=29">百度网盘</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=29"><img src="/resources/images/icon/baiduyun_65.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei">文件备份分享同步工具</dd>
+                            </dl>
+                            
+
+                                                                                                            <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=176">百度有钱</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=176"><img src="/resources/images/icon/youqian_72.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei"></dd>
+                            </dl>
+                            
+
+                                                                                                            <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=199">榴莲</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=199"><img src="/resources/images/icon/liulian_64.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei"></dd>
+                            </dl>
+                            
+
+                                                </div>
+                    </div>
+                </div>
+
+                                <div class="prodtp-list clear" id="4" >
+                    <div class="prod-top yahei">
+                        <div class="prodtp-tl  deft fl">
+                            游戏娱乐
+                        </div>
+                        <div class="prodtp-tr gdesc fl">
+                            帮助解决您在是有游戏娱乐产品时遇到的各种问题
+                        </div>
+                    </div>
+                    <div class="focus-prod clear">
+                        <div class="dl-list">
+                                                                                                            <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=131">百度游戏</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=131"><img src="/resources/images/icon/youxi_65.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei">玩游戏看资讯找同伴</dd>
+                            </dl>
+                            
+
+                                                                                                            <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=95">百度手机输入法</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=95"><img src="/resources/images/icon/mobile_shurufa_72.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei">点划结合，输入更流畅</dd>
+                            </dl>
+                            
+
+                                                                                                            <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=60">百度手机助手</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=60"><img src="/resources/images/icon/mobile_help_72.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei">最新最全安卓手机应用</dd>
+                            </dl>
+                            
+
+                                                                            </div>
+                        <div class="dl-list">
+                                                                                    <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=64">百度HD</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=64"><img src="/resources/images/icon/hd_72.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei"></dd>
+                            </dl>
+                            
+
+                                                                                                            <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=62">百度路由</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=62"><img src="/resources/images/icon/luyou_64.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei"></dd>
+                            </dl>
+                            
+
+                                                </div>
+                    </div>
+                </div>
+
+                                <div class="prodtp-list clear" id="5" >
+                    <div class="prod-top yahei">
+                        <div class="prodtp-tl prodtp-tl-long deft fl">
+                            站长与开发者服务
+                        </div>
+                        <div class="prodtp-tr gdesc fl">
+                            帮助您更加了解和方便使用百度站长与开发者应用
+                        </div>
+                    </div>
+                    <div class="focus-prod clear">
+                        <div class="dl-list">
+                                                                                                            <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=98">搜索开放平台</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=98"><img src="/resources/images/icon/icon.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei">站长提交资源的绿色通道</dd>
+                            </dl>
+                            
+
+                                                                                                            <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=99">站长平台</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=99"><img src="/resources/images/icon/zhanzhang_64.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei">让百度更了解你的网站</dd>
+                            </dl>
+                            
+
+                                                                                                            <dl class="ptlist fl">
+                                <dt><a class="deft" href="http://jubao.baidu.com/jubao/">百度推广</a></dt>
+                                <dd class="pic"><a href="http://jubao.baidu.com/jubao/"><img src="/resources/images/icon/tuiguang_64.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei"></dd>
+                            </dl>
+                            
+
+                                                                            </div>
+                        <div class="dl-list">
+                                                                                    <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=100">数据研究中心</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=100"><img src="/resources/images/icon/icon.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei">获取权威网络数据研究</dd>
+                            </dl>
+                            
+
+                                                                                                            <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=66">百度风云榜</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=66"><img src="/resources/images/icon/fengyun_64.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei">观热点事件看时尚风云</dd>
+                            </dl>
+                            
+
+                                                                                                            <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=102">百度指数</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=102"><img src="/resources/images/icon/icon.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei">搜索权威关键词数据分析</dd>
+                            </dl>
+                            
+
+                                                </div>
+                    </div>
+                </div>
+
+                                <div class="prodtp-list clear" id="6" >
+                    <div class="prod-top yahei">
+                        <div class="prodtp-tl  deft fl">
+                            软件工具
+                        </div>
+                        <div class="prodtp-tr gdesc fl">
+                            帮助您更好地使用百度软件工具
+                        </div>
+                    </div>
+                    <div class="focus-prod clear">
+                        <div class="dl-list">
+                                                                                                            <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=120">百度影音</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=120"><img src="/resources/images/icon/shipin_65.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei">边下边看支持视频搜索</dd>
+                            </dl>
+                            
+
+                                                                                                            <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=59">百度音乐盒</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=59"><img src="/resources/images/icon/music_65.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei"></dd>
+                            </dl>
+                            
+
+                                                                                                            <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=40">百度浏览器</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=40"><img src="/resources/images/icon/browser_72.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei">简洁轻快的新浏览器！</dd>
+                            </dl>
+                            
+
+                                                                            </div>
+                        <div class="dl-list">
+                                                                                    <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=103">百度hi</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=103"><img src="/resources/images/icon/hi_65.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei">简单的与好友聊天</dd>
+                            </dl>
+                            
+
+                                                                                                            <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=41">百度输入法</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=41"><img src="/resources/images/icon/shurufa_72.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei">流畅输入，更懂中文</dd>
+                            </dl>
+                            
+
+                                                                                                            <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=150">百度杀毒</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=150"><img src="/resources/images/icon/shadu_65.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei">更快，更安全</dd>
+                            </dl>
+                            
+
+                                                                            </div>
+                        <div class="dl-list">
+                                                                                    <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=167">百度卫士</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=167"><img src="/resources/images/icon/weishi_65.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei">更快，更安全</dd>
+                            </dl>
+                            
+
+                                                </div>
+                    </div>
+                </div>
+
+                                <div class="prodtp-list clear" id="7" >
+                    <div class="prod-top yahei">
+                        <div class="prodtp-tl  deft fl">
+                            其他服务
+                        </div>
+                        <div class="prodtp-tr gdesc fl">
+                            帮助您更好地使用百度其他服务软件
+                        </div>
+                    </div>
+                    <div class="focus-prod clear">
+                        <div class="dl-list">
+                                                                                                            <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=28">百度帐号</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=28"><img src="/resources/images/icon/passport_64.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei">百度帐号服务</dd>
+                            </dl>
+                            
+
+                                                                                                            <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=26">百度云</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=26"><img src="/resources/images/icon/bce_72.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei">百度全系列云计算产品</dd>
+                            </dl>
+                            
+
+                                                                                                            <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=15">百度招聘</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=15"><img src="/resources/images/icon/icon.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei"></dd>
+                            </dl>
+                            
+
+                                                                            </div>
+                        <div class="dl-list">
+                                                                                    <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=23">百度未来商店</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=23"><img src="/resources/images/icon/store_72.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei">智能硬件聚合销售平台</dd>
+                            </dl>
+                            
+
+                                                                                                            <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=61">百度wifi</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=61"><img src="/resources/images/icon/wifi_66.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei"></dd>
+                            </dl>
+                            
+
+                                                                                                            <dl class="ptlist fl">
+                                <dt><a class="deft" href="/question?prod_id=170">百糯连</a></dt>
+                                <dd class="pic"><a href="/question?prod_id=170"><img src="/resources/images/icon/bainuolian_72.png" onerror="this.src='/resources/images/icon/icon.png'"></a></dd>
+                                <dd class="gdesc yahei"></dd>
+                            </dl>
+                            
+
+                                                </div>
+                    </div>
+                </div>
+
+                
+
+            </div>
+
+        </div>
+        <div class="footer-mod">
+            <div class="footer-list">
+                <div class="service-log"><img src="/resources/images/icon/zhanghao_26.png" /></div>
+                <dl class="dlist">
+                    <dt>帐号安全</dt>
+                    <dd><a href="https://passport.baidu.com/v2/account/password" target="_blank">密码管理</a></dd>
+                    <dd><span class="line">|</span></dd>
+                    <dd><a href="https://passport.baidu.com/?getpassappeal&code" target="_blank">人工申诉</a></dd>
+                    <dd><span class="line">|</span></dd>
+                    <dd><a class="more" href="https://passport.baidu.com/center?_t=1437375292" target="_blank">更多服务>></a></dd>
+                </dl>
+            </div>
+            <div class="footer-list">
+                <div class="service-log"><img src="/resources/images/icon/zhifu_26.png" /></div>
+                <dl class="dlist">
+                    <dt>支付相关</dt>
+                    <dd><a href="http://youxi.baidu.com/cs/cs_home.xhtml" target="_blank">游戏客服</a></dd>
+                    <dd><span class="line">|</span></dd>
+                    <dd><a href="http://e.baidu.com/" target="_blank">百度推广</a></dd>
+                    <dd><span class="line">|</span></dd>
+                    <dd><a class="more" href="/zhifu" target="_blank">更多服务>></a></dd>
+                </dl>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="footer-index">
+    &copy; 2015 Baidu <a href="http://www.baidu.com/duty/" target="_blank">使用百度前必读</a>
+</div>
+<script>var sugapi="http://"+window.location.host;</script>
+<script type="text/javascript" src="/resources/js/sug.js"></script>
+<script type="text/javascript" src="/resources/js/index.js"></script>
+<script type="text/javascript">
+    var __index = 1;
+
+</script>
+</body>
+</html><!--01254606410328555530120219-->
+<script> var _trace_page_logid = 0125460641; </script><!--01254252500992500746120219-->
+<script> var _trace_page_logid = 0125425250; </script>

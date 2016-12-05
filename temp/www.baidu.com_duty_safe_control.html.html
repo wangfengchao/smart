@@ -1,0 +1,126 @@
+﻿
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>个性化配置工具设置</title>
+        <link href="//www.baidu.com/pub/css/new_font.css" rel="stylesheet" type="text/css">
+    </head>
+    <style type="text/css">
+        ul,li{list-style:none;padding:0px;margin:0px;}
+        #isUse{font-size:12px;color:#ffffff;text-align:center;font-weight:bold;display:inline-block;background:url(//www.baidu.com/duty/img/bt_bg.gif) no-repeat;width:99px;height:37px;line-height:34px;cursor:pointer;margin-top:20px;}
+        <!--
+        a.col_cp:hover,a.col_cp:link,a.col_cp:visited {color:#7677ca;}
+        #cp{width:760px;color:#7677ca;text-align:center;height:20px;padding-top:2px;font-size:12px;font-family:arial;}
+        -->
+    </style>
+    
+    <body>
+        <table width="760" border="0" align="center" cellpadding="0" cellspacing="0">
+            <tr>
+                <td width="155"><a href="http://www.baidu.com"><img src="//www.baidu.com/img/logo-yy.gif" border="0"></a>
+                </td>
+                <td height="46" valign="bottom">
+                    <div class="bgblue lh1"><span class="f14b">百度隐私权保护声明</span>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <center>
+            <div class="dwall">
+                <div class="dwleft">
+                    <div class="padL_1"><a href="http://www.baidu.com">百度首页</a>
+                        <br><a href="http://home.baidu.com/">关于百度</a>
+                    </div>
+                    <br>
+                    <div class="padL_3"> <a href="copyright.html" class="padL_2">知识产权声明</a>
+                        <br>	<a href="index.html" class="padL_2">免责声明</a>
+                        <br> <a href="right.html" class="padL_2">权利声明</a>
+                        <br>	<span class="t_bg_yellow">隐私权保护声明</span>
+                        <br>	<a href="baozhan.html" class="padL_2">网民权益保障声明</a>
+                    </div>
+                    <center></center>
+                </div>
+                <div class="dwri_bule">
+                    <table border="0" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td valign="top">
+                                <p><strong>个性化配置工具设置</strong>&nbsp;&nbsp;&nbsp;&nbsp;<a href="//www.baidu.com/duty/yinsiquan.html">返回</a>
+                                </p>
+                                <ul>
+                                    <li id="tip">为了在您访问百度联盟网站时，向您推荐与您更相关或您更感兴趣的推广信息，百度联盟通过cookie记录您的偏好信息（不涉及任何指向您个人信息）；如果您不希望百度联盟使用记录到的偏好信息向您推荐个性化推广信息，可以通过下方按钮选择停用，停用后百度联盟将不会再根据您的偏好信息向您推荐个性化的推广信息。个性化配置工具只适用于您当前使用的计算机上的当前浏览器。并且，当您删除当前浏览器的cookie后，系统会自动重置您浏览器的个性化配置工具设置。</li>
+                                    <li
+                                    id="isUse" onClick="cookieControl()"></li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="cp" style="clear:both">&copy;2012&nbsp;Baidu&nbsp;<a href="http://www.baidu.com/duty/" target="_blank"
+                    class="col_cp">使用百度前必读</a>
+                </div>
+            </div>
+        </center>
+        <script type="text/javascript">
+            var cpro_url = "http://help.wangmeng.baidu.com/cpro.php";
+            
+            
+            function setCookieByCpro(val){
+            
+            	var img = document.createElement("img");
+            
+            	img.src = cpro_url + "?pry=" + val + "&_t=" + (new Date()).getTime();	
+            
+            }
+            
+            function G(id){
+            	return document.getElementById(id);
+            }
+            var date = new Date("June 3,2015");
+            var cookieDate = date.toGMTString();
+            function setCookie0(){
+            	setCookieByCpro(0);
+            }
+            function setCookie1(){
+            	setCookieByCpro(1);
+            }
+            
+            (function(){
+            	if(getCookie("PRY") == "" || getCookie("PRY") == null){
+            		setCookie0();
+            		G("isUse").innerHTML = "选择停用";
+            		G("tip").innerHTML = "为了在您访问百度联盟网站时，向您推荐与您更相关或您更感兴趣的推广信息，百度联盟通过cookie记录您的偏好信息（不涉及任何指向您个人信息）；如果您不希望百度联盟使用记录到的偏好信息向您推荐个性化推广信息，可以通过下方按钮选择停用，停用后百度联盟将不会再根据您的偏好信息向您推荐个性化的推广信息。个性化配置工具只适用于您当前使用的计算机上的当前浏览器。并且，当您删除当前浏览器的cookie后，系统会自动重置您浏览器的个性化配置工具设置。";
+            	}else if(getCookie("PRY") == 1){
+            		G("isUse").innerHTML = "启用";
+            		G("tip").innerHTML = "您已选择停用当前浏览器cookie，但您也可以随时选择重新启用。如果选择重新启用，我们将基于您的偏好信息在您访问百度联盟网站时，向您推荐与您更相关或您更感兴趣的信息。";
+            	}else{
+            		G("isUse").innerHTML = "选择停用";
+            		G("tip").innerHTML = "为了在您访问百度联盟网站时，向您推荐与您更相关或您更感兴趣的推广信息，百度联盟通过cookie记录您的偏好信息（不涉及任何指向您个人信息）；如果您不希望百度联盟使用记录到的偏好信息向您推荐个性化推广信息，可以通过下方按钮选择停用，停用后百度联盟将不会再根据您的偏好信息向您推荐个性化的推广信息。个性化配置工具只适用于您当前使用的计算机上的当前浏览器。并且，当您删除当前浏览器的cookie后，系统会自动重置您浏览器的个性化配置工具设置。";
+            	}
+            })();
+            function cookieControl(){
+            	if(G("isUse").innerHTML == "启用"){
+            		setCookie0();	
+            	}else{
+            		setCookie1();	
+            	}
+            	G("isUse").innerHTML = G("isUse").innerHTML == "启用"?"选择停用":"启用";
+            	G("tip").innerHTML = G("tip").innerHTML == "您已选择停用当前浏览器cookie，但您也可以随时选择重新启用。如果选择重新启用，我们将基于您的偏好信息在您访问百度联盟网站时，向您推荐与您更相关或您更感兴趣的信息。"?"为了在您访问百度联盟网站时，向您推荐与您更相关或您更感兴趣的推广信息，百度联盟通过cookie记录您的偏好信息（不涉及任何指向您个人信息）；如果您不希望百度联盟使用记录到的偏好信息向您推荐个性化推广信息，可以通过下方按钮选择停用，停用后百度联盟将不会再根据您的偏好信息向您推荐个性化的推广信息。个性化配置工具只适用于您当前使用的计算机上的当前浏览器。并且，当您删除当前浏览器的cookie后，系统会自动重置您浏览器的个性化配置工具设置。":"您已选择停用当前浏览器cookie，但您也可以随时选择重新启用。如果选择重新启用，我们将基于您的偏好信息在您访问百度联盟网站时，向您推荐与您更相关或您更感兴趣的信息。";
+            }
+            function getCookie(searchName){
+            	var cookies = document.cookie.split("; ");
+            	for(var i = 0;i < cookies.length; i++){
+            		var cookieCrumbs = cookies[i].split("=");
+            		var cookieName = cookieCrumbs[0];
+            		var cookieValue = cookieCrumbs[1];
+            		if(cookieName == searchName){
+            			return cookieValue;
+            		}
+            	}
+            }
+        </script>
+    </body>
+
+</html>
