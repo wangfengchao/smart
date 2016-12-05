@@ -1,0 +1,12 @@
+target/
+.idea
+*.iml
+smart-scala/target/
+smart-scala/*.iml
+smart-crawler/target/
+smart-crawler/*.iml
+smart-magic/target/
+smart-magic/*.iml
+
+
+
