@@ -36,10 +36,16 @@
       <commons-logging.version>1.2</commons-logging.version>
       <antlr.version>2.7.7</antlr.version>
       <webmagic.version>0.5.3</webmagic.version>
+      <jsonpath.version>2.2.0</jsonpath.version>
   </properties>
 
   <dependencyManagement>
       <dependencies>
+          <dependency>
+              <groupId>com.jayway.jsonpath</groupId>
+              <artifactId>json-path</artifactId>
+              <version>${jsonpath.version}</version>
+          </dependency>
           <dependency>
               <groupId>us.codecraft</groupId>
               <artifactId>webmagic-core</artifactId>
