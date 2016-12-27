@@ -8,21 +8,27 @@ public class ShellSort {
 
     public static void main(String[] args) {
         int[] eles = {2, 35, 23, 10, 7, 9, 30, 50, 66};
-        int h = eles.length / 2;
-        while (h > 1) {
-            for (int i = h; i < eles.length; i++) {
-                int j = i - h;
-                int tmp = eles[i];
-                for (; j >= 0 && eles[j] > tmp; j = j - h) {
-                    eles[j + h] = eles[j];
+        int a = eles.length;
+        int temp = 0;
+        while (true) {
+            a = a / 2;
+            for (int x = 0; x < a; x++) {
+                for (int i = x + a; i < eles.length; i += a) {
+                    int j = i - a;
+                    temp = eles[i];
+                    for (; j >= 0 && temp <eles[j]; j -= a) {
+                        eles[j + a] = eles[j];
+                    }
+                    eles[j + a] = temp;
                 }
-                eles[j + h] = tmp;
             }
-            h = h / 2;
+
+            if (a == 1) break;
         }
 
-        for (int ele : eles) {
-            System.out.println(ele);
+        for (int i : eles) {
+            System.out.print(i +"\t");
         }
+
     }
 }
