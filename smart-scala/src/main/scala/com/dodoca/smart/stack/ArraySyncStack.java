@@ -1,6 +1,7 @@
 package com.dodoca.smart.stack;
 
 /**
+ * 栈 后进先出
  * Created by Administrator on 2016/12/25.
  */
 public class ArraySyncStack<E> {
