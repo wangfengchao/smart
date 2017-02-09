@@ -7,4 +7,5 @@ import com.dodoca.smart.utils.LoggerUtils
   **/
 class Test extends LoggerUtils {
 
+
 }

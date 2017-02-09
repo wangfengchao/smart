@@ -7,9 +7,7 @@ public class QuickSort3 {
 
     public static void main(String[] args) {
         int [] arr = {3, 4, 8, 1, 2, 6, 7, 9, 5};
-        for (int i = 0; i < arr.length; i++) {
-            quickSort(arr, i, arr.length - 1);
-        }
+        quickSort(arr, 0, arr.length - 1);
 
         for (int i : arr) {
             System.out.print(i + "\t");

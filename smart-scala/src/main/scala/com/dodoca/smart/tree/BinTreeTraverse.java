@@ -10,7 +10,7 @@ public class BinTreeTraverse {
     private int [] arr = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
     private static List<Node> nodeList = null;
 
-    private static class Node {
+    public static class Node {
         Node leftNode;
         Node rightNode;
         int data;
@@ -43,56 +43,6 @@ public class BinTreeTraverse {
             nodeList.get(lastParentIndex).rightNode = nodeList.get(lastParentIndex * 2 + 2);
         }
 
-    }
-
-    /**
-     * BFS
-     *
-     * Binary Tree Level Order Traversal
-     *
-     * @param root
-     * @return
-     */
-    public static List<List<Integer>> levelOrder(Node root) {
-        List result = new ArrayList();
-        if (root == null) return result;
-
-        Queue<Node> queue = new LinkedList<Node>();
-        queue.add(root);
-
-        while (!queue.isEmpty()) {
-            List<Integer> level = new ArrayList<Integer>();
-            int size = queue.size();
-            for (int i = 0; i < size; i++) {
-                Node head = queue.poll();
-                level.add(head.data);
-                if (head.leftNode != null) {
-                    queue.add(head.leftNode);
-                }
-                if (head.rightNode != null) {
-                    queue.add(head.rightNode);
-                }
-            }
-            result.add(level);
-        }
-
-        return result;
-    }
-
-    /**
-     *  Minimum Depth of Binary Tree -- LeetCode
-     *
-     * 其实跟Maximum Depth of Binary Tree非常类似，只是这道题因为是判断最小深度，所以必须增加一个叶子的判断（因为如果一个节点如果只有左子树或者右子树，
-     * 我们不能取它左右子树中小的作为深度，因为那样会是0，我们只有在叶子节点才能判断深度，而在求最大深度的时候，因为一定会取大的那个，所以不会有这个问题）。
-     * 这道题同样是递归和非递归的解法，递归解法比较常规的思路，比Maximum Depth of Binary Tree多加一个左右子树的判断，
-     * @param root
-     * @return
-     */
-    public static int minDepth(Node root) {
-        if (root == null) return 0;
-        if (root.leftNode == null) return minDepth(root.rightNode) + 1;
-        if (root.rightNode == null) return minDepth(root.leftNode) + 1;
-        return Math.min(minDepth(root.leftNode), minDepth(root.rightNode)) + 1;
     }
 
 
@@ -188,6 +138,24 @@ public class BinTreeTraverse {
         return Math.max(llen, rlen) + 1;
     }
 
+
+    /**
+     *  Minimum Depth of Binary Tree -- LeetCode
+     *
+     * 其实跟Maximum Depth of Binary Tree非常类似，只是这道题因为是判断最小深度，所以必须增加一个叶子的判断（因为如果一个节点如果只有左子树或者右子树，
+     * 我们不能取它左右子树中小的作为深度，因为那样会是0，我们只有在叶子节点才能判断深度，而在求最大深度的时候，因为一定会取大的那个，所以不会有这个问题）。
+     * 这道题同样是递归和非递归的解法，递归解法比较常规的思路，比Maximum Depth of Binary Tree多加一个左右子树的判断，
+     * @param root
+     * @return
+     */
+    public static int minDepth(Node root) {
+        if (root == null) return 0;
+        if (root.leftNode == null) return minDepth(root.rightNode) + 1;
+        if (root.rightNode == null) return minDepth(root.leftNode) + 1;
+        return Math.min(minDepth(root.leftNode), minDepth(root.rightNode)) + 1;
+    }
+
+
     /**
      * 二叉树反转
      * @param node
@@ -235,21 +203,19 @@ public class BinTreeTraverse {
         }
     }
 
-    public static void nonInOrder(Node p) {
+    public static void nonInOrder(Node root) {
         Stack<Node> stack = new Stack<Node>();
-        Node node = p;
-        while (node != null || stack.size() > 0) {
-            while (node != null) {
-                stack.push(node);
-                node = node.leftNode;
-            }
-
-            while (stack.size() > 0) {
-                node = stack.pop();
-                System.out.print(node.data + "\t");
-                node = node.rightNode;
+        while(root != null || !stack.isEmpty()) {
+            if (root != null) {
+                stack.push(root);
+                root = root.leftNode;
+            } else {
+                root = stack.pop();
+                System.out.print(root.data + "\t");
+                root = root.rightNode;
             }
         }
+
     }
 
     public static void main(String[] args) {
@@ -291,15 +257,18 @@ public class BinTreeTraverse {
         System.out.println("Minimum Depth of Binary Tree -- " + minDepth(node));
         System.out.println();
         System.out.println("==============Binary Tree Level Order Traversal=============");
-        List<List<Integer>> result = levelOrder(node);
+        List<List<Integer>> result = TreeLevel.levelOrder(node);
         for (List<Integer> ele : result) {
             System.out.println(ele);
         }
+        System.out.println();
+        System.out.println("==============Binary Tree Level Order Traversal  DFS=============");
+        ArrayList<ArrayList<Integer>> re = TreeLevel.levelOrderDFS(node);
+        TreeLevel.reverseList(re);
+        for (List<Integer> ele : re) {
+            System.out.println(ele);
+        }
 
-        String s = new String();
-        s = "aaab";
-        char[] c = s.toCharArray();
-        System.out.println(c.length);
 
     }
 
