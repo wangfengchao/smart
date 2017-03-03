@@ -215,7 +215,6 @@ public class BinTreeTraverse {
                 root = root.rightNode;
             }
         }
-
     }
 
     public static void main(String[] args) {
@@ -268,7 +267,8 @@ public class BinTreeTraverse {
         for (List<Integer> ele : re) {
             System.out.println(ele);
         }
-
+        System.out.println("\n ================ 二叉树的层次遍历================");
+        TreeLevel.levelIterator(node);
 
     }
 

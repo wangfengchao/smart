@@ -11,6 +11,27 @@ import java.util.Queue;
 public class TreeLevel {
 
     /**
+     *  二叉树的层次遍历
+     * @param root
+     */
+    public static void levelIterator(BinTreeTraverse.Node root) {
+        if (root == null) return;
+
+        LinkedList<BinTreeTraverse.Node> queue = new LinkedList<BinTreeTraverse.Node>();
+        queue.offer(root);
+        while (! queue.isEmpty()) {
+            BinTreeTraverse.Node curr = queue.poll();
+            System.out.print(curr.data + " --> ");
+            if (curr.leftNode != null) {
+                queue.offer(curr.leftNode);
+            }
+            if (curr.rightNode != null) {
+                queue.offer(curr.rightNode);
+            }
+        }
+    }
+
+    /**
      * BFS
      *
      * Binary Tree Level Order Traversal
