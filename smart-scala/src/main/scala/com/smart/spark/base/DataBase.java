@@ -40,7 +40,7 @@ public class DataBase {
      * @param appName
      * @return
      */
-    public String updateAppIdFunc(String appName) {
+    public String selectAppIdFunc(String appName) {
         String resAppId = "";
         try {
             Connection conn = DBUtils.getConnection();

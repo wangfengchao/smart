@@ -27,7 +27,7 @@ public class QuartzJob implements Job {
      * @param jobExecutionContext
      * @throws JobExecutionException
      */
-    public void execute(JobExecutionContext jobExecutionContext)  {
+    public void execute(JobExecutionContext jobExecutionContext) {
         try {
             HttpUtils http = new HttpUtils();
             System.out.println("Testing 1 - Send Http GET request");
@@ -40,15 +40,25 @@ public class QuartzJob implements Job {
                 appInfos.put(obj.getString("name"), obj.getString("id"));
             }
 
-            Set<String> appNames = appInfos.keySet();
-            // 查询所有APPName
+            Set<String> mapKeyAppNames = appInfos.keySet();
+
             DataBase base = new DataBase();
-            Set<String> appNameSet = base.getAllAppNameFunc();
-            System.out.println(appNameSet);
-            for (String appName : appNames) {
-                if (!appNameSet.contains(appName) && appNames.size() <= appNameSet.size()) {
-                    FoxmailUtils.sendEmail(appInfos.get(appName), appName);
-                } else {
+            Set<String> appNames = base.getAllAppNameFunc();
+            System.out.println(appNames);
+            for (String appName: mapKeyAppNames) {
+                if (! appNames.contains(appName)) {
+                    mapKeyAppNames.remove(appName);
+                }
+            }
+
+            if (mapKeyAppNames.size() < appNames.size()) {
+                for (String appName: appNames) {
+                    if (!mapKeyAppNames.contains(appName)) {
+                        FoxmailUtils.sendEmail(appInfos.get(appName), appName);
+                    }
+                }
+            } else {
+                for (String appName : appNames) {
                     process(appInfos.get(appName), appName);
                 }
             }
@@ -66,7 +76,7 @@ public class QuartzJob implements Job {
      */
     public void process(String appId, String appName) {
         DataBase base = new DataBase();
-        String resAppId = base.updateAppIdFunc(appName);
+        String resAppId = base.selectAppIdFunc(appName);
         if (StringUtils.isNotBlank(resAppId) && !appId.equals(resAppId)) {
             // update app id
             int isSuccess = base.updateAppIdFunc(appId, appName);
