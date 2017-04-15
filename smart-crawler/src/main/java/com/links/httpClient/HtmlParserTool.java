@@ -24,7 +24,6 @@ public class HtmlParserTool {
             // 过滤 <frame >标签的 filter，用来提取 frame 标签里的 src 属性
             NodeFilter frameFilter = new NodeFilter() {
                 private static final long serialVersionUID = 1L;
-                @Override
                 public boolean accept(Node node) {
                     if (node.getText().startsWith("frame src=")) {
                         return true;

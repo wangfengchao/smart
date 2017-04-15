@@ -1,12 +1,11 @@
 target/
 .idea
 *.iml
+smart-spark/*.iml
+smart-spark/target
 smart-scala/target/
 smart-scala/*.iml
 smart-crawler/target/
 smart-crawler/*.iml
 smart-magic/target/
 smart-magic/*.iml
-
-
-

@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <parent>
     <artifactId>smart</artifactId>
-    <groupId>com.dodoca.smart</groupId>
+    <groupId>com.smart</groupId>
     <version>1.0-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
@@ -10,8 +10,33 @@
   <inceptionYear>2008</inceptionYear>
   <build>
     <sourceDirectory>src/main/scala</sourceDirectory>
-    <testSourceDirectory>src/test/scala</testSourceDirectory>
+    <resources>
+      <resource>
+        <filtering>true</filtering>
+        <directory>${basedir}/src/main/resources/${env}</directory>
+        <includes>
+          <include>*.properties</include>
+        </includes>
+      </resource>
+    </resources>
     <plugins>
+      <plugin>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>2.4.1</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <transformers>
+                <transformer />
+              </transformers>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
       <plugin>
         <groupId>org.scala-tools</groupId>
         <artifactId>maven-scala-plugin</artifactId>
@@ -26,28 +51,9 @@
         <configuration>
           <scalaVersion>${scala.version}</scalaVersion>
           <args>
-            <arg>-target:jvm-1.5</arg>
+            <arg>-target:jvm-1.7</arg>
           </args>
         </configuration>
-      </plugin>
-      <plugin>
-        <artifactId>maven-shade-plugin</artifactId>
-        <version>2.4.1</version>
-        <executions>
-          <execution>
-            <phase>package</phase>
-            <goals>
-              <goal>shade</goal>
-            </goals>
-            <configuration>
-              <transformers>
-                <transformer>
-                  <mainClass>com.dodoca.smart.LoadData</mainClass>
-                </transformer>
-              </transformers>
-            </configuration>
-          </execution>
-        </executions>
       </plugin>
       <plugin>
         <artifactId>maven-eclipse-plugin</artifactId>
@@ -67,6 +73,20 @@
       </plugin>
     </plugins>
   </build>
+  <profiles>
+    <profile>
+      <id>prod</id>
+      <properties>
+        <env>conf/prod</env>
+      </properties>
+    </profile>
+    <profile>
+      <id>test</id>
+      <properties>
+        <env>conf/test</env>
+      </properties>
+    </profile>
+  </profiles>
   <repositories>
     <repository>
       <id>scala-tools.org</id>
@@ -81,40 +101,6 @@
       <url>http://scala-tools.org/repo-releases</url>
     </pluginRepository>
   </pluginRepositories>
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.12</version>
-      <scope>test</scope>
-      <exclusions>
-        <exclusion>
-          <artifactId>hamcrest-core</artifactId>
-          <groupId>org.hamcrest</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.specs</groupId>
-      <artifactId>specs</artifactId>
-      <version>1.2.5</version>
-      <scope>test</scope>
-      <exclusions>
-        <exclusion>
-          <artifactId>scalatest</artifactId>
-          <groupId>org.scalatest</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>scalacheck</artifactId>
-          <groupId>org.scalacheck</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>jmock</artifactId>
-          <groupId>org.jmock</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-  </dependencies>
   <reporting>
     <plugins>
       <plugin>
@@ -127,7 +113,7 @@
     </plugins>
   </reporting>
   <properties>
-    <scala.version>2.11.0</scala.version>
+    <mongo.version>3.2.0</mongo.version>
   </properties>
 </project>
 
