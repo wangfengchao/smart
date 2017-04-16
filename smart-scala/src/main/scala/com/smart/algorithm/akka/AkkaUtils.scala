@@ -4,7 +4,7 @@ import com.typesafe.config.ConfigFactory
 
 
 /**
-  * Created by fc.w on 2017/3/7.
+  *  * Created by fc.w on 2017/3/7.
   */
 object AkkaUtils {
   val config = ConfigFactory.load()

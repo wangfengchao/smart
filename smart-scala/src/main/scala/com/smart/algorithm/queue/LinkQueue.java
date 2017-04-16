@@ -1,4 +1,4 @@
-package com.dodoca.smart.queue;
+package com.smart.algorithm.queue;
 
 /**
  * Created by Administrator on 2017/1/5.
