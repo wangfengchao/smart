@@ -1,14 +1,9 @@
 package com.links.smart;
 
-import info.monitorenter.cpdetector.io.*;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.nio.charset.Charset;
-import org.mozilla.intl.chardet.nsDetector;
-import org.mozilla.intl.chardet.nsICharsetDetectionObserver;
-import org.mozilla.intl.chardet.nsPSMDetector;
 
 /**
  * Created by  fc.w on 2016/12/2.

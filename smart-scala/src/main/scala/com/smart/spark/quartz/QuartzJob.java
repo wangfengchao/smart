@@ -5,15 +5,14 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.smart.spark.base.DataBase;
 import com.smart.spark.email.FoxmailUtils;
+import com.smart.spark.utils.ConfigProperties;
 import com.smart.spark.utils.HttpUtils;
 import org.apache.commons.lang.StringUtils;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 
 /**
@@ -30,36 +29,25 @@ public class QuartzJob implements Job {
     public void execute(JobExecutionContext jobExecutionContext) {
         try {
             HttpUtils http = new HttpUtils();
-            System.out.println("Testing 1 - Send Http GET request");
-            String res = http.sendGet("http://h1:8088/ws/v1/cluster/apps?states=RUNNING");
+            String yarnUrl = ConfigProperties.getString("yarn.url");
+            String res = http.sendGet(yarnUrl+"/ws/v1/cluster/apps?states=RUNNING");
+
+            // 解析json获取sparkStreaming应用名
             JSONObject jsonObj = JSON.parseObject(res);
             JSONArray jsonArray = jsonObj.getJSONObject("apps").getJSONArray("app");
-            Map<String, String> appInfos = new HashMap<String, String>();
+            List<String> appInfos = new ArrayList<String>();
             for (int i = 0; i < jsonArray.size(); i++) {
                 JSONObject obj = jsonArray.getJSONObject(i);
-                appInfos.put(obj.getString("name"), obj.getString("id"));
+                appInfos.add(obj.getString("name"));
             }
 
-            Set<String> mapKeyAppNames = appInfos.keySet();
-
-            DataBase base = new DataBase();
-            Set<String> appNames = base.getAllAppNameFunc();
-            System.out.println(appNames);
-            for (String appName: mapKeyAppNames) {
-                if (! appNames.contains(appName)) {
-                    mapKeyAppNames.remove(appName);
-                }
-            }
-
-            if (mapKeyAppNames.size() < appNames.size()) {
-                for (String appName: appNames) {
-                    if (!mapKeyAppNames.contains(appName)) {
-                        FoxmailUtils.sendEmail(appInfos.get(appName), appName);
-                    }
-                }
-            } else {
-                for (String appName : appNames) {
-                    process(appInfos.get(appName), appName);
+            // 查询DB 获取sparkStreaming应用名
+            DataBase dataBase = new DataBase();
+            List<String> appNames = dataBase.getAllAppNameFunc();
+            for (String appName : appNames) {
+                if (! appInfos.contains(appName)) {
+                    // 发送异常邮件
+                    FoxmailUtils.sendEmail(appName);
                 }
             }
 
@@ -69,23 +57,4 @@ public class QuartzJob implements Job {
 
     }
 
-    /**
-     * 更新App ID
-     * @param appId
-     * @param appName
-     */
-    public void process(String appId, String appName) {
-        DataBase base = new DataBase();
-        String resAppId = base.selectAppIdFunc(appName);
-        if (StringUtils.isNotBlank(resAppId) && !appId.equals(resAppId)) {
-            // update app id
-            int isSuccess = base.updateAppIdFunc(appId, appName);
-            if (isSuccess == 1) {
-                System.out.println("-----------Update APP ID Success-----------------------");
-            } else {
-                System.out.println("-----------Update APP ID Failure-----------------------");
-            }
-        }
-
-    }
 }

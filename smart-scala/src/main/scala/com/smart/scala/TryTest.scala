@@ -1,4 +1,4 @@
-package com.smart.algorithm.scala
+package com.smart.scala
 
 import java.net.URL
 

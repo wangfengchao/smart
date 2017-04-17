@@ -6,7 +6,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 /**
  * Created by fc.w on 2017/4/1.
@@ -17,8 +19,8 @@ public class DataBase {
      * 获取所有App Id
      * @return
      */
-    public HashSet<String> getAllAppNameFunc() {
-        HashSet<String> retList = new HashSet<String>();
+    public List<String> getAllAppNameFunc() {
+        List<String> retList = new ArrayList<String>();
         try {
             Connection conn = DBUtils.getConnection();
             PreparedStatement preStmt = conn.prepareStatement("SELECT app_name FROM yarn_app");
