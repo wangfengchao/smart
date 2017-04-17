@@ -1,6 +1,6 @@
-package com.smart.algorithm.processor;
+package com.smart.processor;
 
-import com.smart.algorithm.site.CookieSite;
+import com.smart.site.CookieSite;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;

@@ -1,10 +1,10 @@
-package com.smart.algorithm.processor;
+package com.smart.processor;
 
-import com.smart.algorithm.pipline.QianlimaPipeline;
+import com.smart.pipline.QianlimaPipeline;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.smart.algorithm.site.QianlimaSite;
+import com.smart.site.QianlimaSite;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;

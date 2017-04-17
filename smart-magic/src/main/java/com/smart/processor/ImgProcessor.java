@@ -1,7 +1,7 @@
-package com.smart.algorithm.processor;
+package com.smart.processor;
 
-import com.smart.algorithm.site.ImgSite;
-import com.smart.algorithm.pipline.ImgPipeline;
+import com.smart.site.ImgSite;
+import com.smart.pipline.ImgPipeline;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;

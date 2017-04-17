@@ -1,4 +1,4 @@
-package com.smart.algorithm.utils;
+package com.smart.utils;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;

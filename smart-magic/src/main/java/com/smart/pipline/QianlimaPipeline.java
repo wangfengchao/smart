@@ -1,4 +1,4 @@
-package com.smart.algorithm.pipline;
+package com.smart.pipline;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;

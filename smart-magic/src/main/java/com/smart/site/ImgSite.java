@@ -1,4 +1,4 @@
-package com.smart.algorithm.site;
+package com.smart.site;
 
 import us.codecraft.webmagic.Site;
 

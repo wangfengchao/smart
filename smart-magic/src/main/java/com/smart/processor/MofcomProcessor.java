@@ -1,7 +1,7 @@
-package com.smart.algorithm.processor;
+package com.smart.processor;
 
-import com.smart.algorithm.pipline.MofcomPipeline;
-import com.smart.algorithm.site.MofcomSite;
+import com.smart.pipline.MofcomPipeline;
+import com.smart.site.MofcomSite;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;

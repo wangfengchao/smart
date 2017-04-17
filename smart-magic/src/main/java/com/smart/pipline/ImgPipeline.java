@@ -1,4 +1,4 @@
-package com.smart.algorithm.pipline;
+package com.smart.pipline;
 
 import us.codecraft.webmagic.ResultItems;
 import us.codecraft.webmagic.Task;

@@ -1,6 +1,6 @@
-package com.smart.algorithm.app;
+package com.smart.app;
 
-import com.smart.algorithm.processor.QianlimaProcessor;
+import com.smart.processor.QianlimaProcessor;
 
 /**
  * Created by  fc.w on 2016/12/5.

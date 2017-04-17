@@ -1,4 +1,4 @@
-package com.smart.algorithm.jsonpath;
+package com.smart.jsonpath;
 
 import com.jayway.jsonpath.Configuration;
 import com.jayway.jsonpath.JsonPath;
