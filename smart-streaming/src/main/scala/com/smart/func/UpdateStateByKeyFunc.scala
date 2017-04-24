@@ -5,4 +5,6 @@ package com.smart.func
   */
 class UpdateStateByKeyFunc {
 
+
+
 }

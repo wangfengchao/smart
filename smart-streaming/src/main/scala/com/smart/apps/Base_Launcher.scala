@@ -1,15 +1,15 @@
-package com.lifang
+package com.smart.apps
 
-import com.lifang.util.CommonUtils
+import com.smart.utils.CommonUtils
 import kafka.serializer.StringDecoder
 import org.apache.spark.SparkConf
-import org.apache.spark.streaming.kafka.KafkaUtils
 import org.apache.spark.streaming.{Seconds, StreamingContext}
+import org.apache.spark.streaming.kafka.KafkaUtils
 
 /**
-  * Created by fc.w on 2017/4/12.
+  * Created by fc.w on 2017/4/17.
   */
-object Launcher {
+object Base_Launcher {
 
   def main(args: Array[String]): Unit = {
     val conf = new SparkConf().setAppName(CommonUtils.appName)
@@ -24,7 +24,7 @@ object Launcher {
 
     kafkaStream.map(_._2).countByValue().foreachRDD(re => re.foreach(record => println("countByValue: " + record)))
 
-   kafkaStream.map(_._2.split(",")).flatMap(x => {
+    kafkaStream.map(_._2.split(",")).flatMap(x => {
       for (i <- 0 until x.length - 1) yield (x(i) + "," + x(i + 1), 1)
     }).reduceByKey(_+_).foreachRDD(record => {
       record.foreach(record => println("flatMap + recudeByKey: " + record))

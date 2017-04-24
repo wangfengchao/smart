@@ -1,4 +1,4 @@
-package com.lifang.util;
+package com.smart.kafka;
 
 import org.apache.kafka.clients.producer.*;
 import org.slf4j.Logger;
