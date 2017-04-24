@@ -1,4 +1,4 @@
-##################################### 算法 ########################################
+##################################### 算法 ########################################                
 smart-algorithm:                                                                                         
     1. com.smart.algorithm.leetcode: leetcode算法题                                                                                         
     2. com.smart.algorithm.sort:     常见的排序算法                                                                                         
@@ -9,14 +9,14 @@ smart-algorithm:
     7. com.smart.algorithm.design:   设计模式                                                                                         
     8. com.smart.algorithm.atomic:   JAVA原子类测试                                                                                         
                                                   
-##################################### 爬虫 ########################################
+##################################### 爬虫 ########################################                
 smart-crawler：                                                                                         
     1. 使用原始解析html页面和HttpClient方式爬虫                                                                                         
                                                                                              
 smart-magic：                                                                                         
     1. WebMagic方式爬虫                                                                                         
                                                   
-##################################### Spark ########################################
+##################################### Spark ########################################                
 smart-scala：                                                                                         
     1. com.smart.spark.KafkaOffsetLauncher: MySQL方式自定义管理kafka offset偏移量                                                           
     2. com.smart.spark.ZKOffsetLauncher:    ZK方式自定义管理kafka offset偏移量                                                  
@@ -25,7 +25,7 @@ smart-scala：
     5. com.smart.spark.sparkSQL:            sparkSQL测试Demo                                                  
     6. com.smart.spark.logging:             log工具类                                                  
                                                   
-##################################### SparkStreaming ########################################
+##################################### SparkStreaming ########################################                
 smart-streaming：                                                  
     1. com.smart.apps.Base_Launcher:             基本函数测试                                                  
     2. com.smart.apps.UpdateStateByKey_Launcher: updateStateByKey测试                                                  
