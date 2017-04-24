@@ -1,4 +1,4 @@
-package com.smart.algorithm.singleton;
+package com.smart.algorithm.design.singleton;
 
 /**
  * http://blog.csdn.net/goodlixueyong/article/details/51935526

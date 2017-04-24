@@ -9,6 +9,8 @@
       <module>smart-scala</module>
       <module>smart-crawler</module>
       <module>smart-magic</module>
+      <module>smart-streaming</module>
+      <module>smart-algorithm</module>
   </modules>
   <packaging>pom</packaging>
   <name>smart</name>

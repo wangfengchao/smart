@@ -1,4 +1,4 @@
-package com.smart.algorithm.singleton;
+package com.smart.algorithm.design.singleton;
 
 /**
  * 懒汉 线程安全，效率低
