@@ -8,6 +8,7 @@ public class PowerOfFour_342 {
 
     public static void main(String[] args) {
         System.out.println(isPowerOfFour_Recursion(16));
+        System.out.println(isPowerOfFour_Bit(16));
     }
 
     /**
@@ -22,6 +23,16 @@ public class PowerOfFour_342 {
             return isPowerOfFour_Recursion(n / 4);
         }
         return false;
+    }
+
+    /**
+     * 位运算
+     * @param n
+     * @return
+     */
+    public static boolean isPowerOfFour_Bit(int n) {
+        if (n == 0) return false;
+        return ((n & (n - 1)) == 0 && (n&0x55555555) == n);
     }
 
 }

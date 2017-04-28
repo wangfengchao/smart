@@ -51,7 +51,7 @@ object UpdateStateByKey_Launcher {
       Some(currentSum + previousSum)
     }
 
-    val totalPayment = paymentSum.updateStateByKey[Double](addFunction)
+//    val totalPayment = paymentSum.updateStateByKey[Double](addFunction)
 
     ssc
   }
