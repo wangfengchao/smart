@@ -11,6 +11,7 @@
       <module>smart-magic</module>
       <module>smart-streaming</module>
       <module>smart-algorithm</module>
+      <module>smart-ml</module>
   </modules>
   <packaging>pom</packaging>
   <name>smart</name>
