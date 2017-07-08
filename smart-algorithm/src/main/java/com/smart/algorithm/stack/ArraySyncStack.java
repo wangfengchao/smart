@@ -2,6 +2,7 @@ package com.smart.algorithm.stack;
 
 /**
  * 栈 后进先出
+ * 栈的顺序存储结构实现：
  * Created by Administrator on 2016/12/25.
  */
 public class ArraySyncStack<E> {

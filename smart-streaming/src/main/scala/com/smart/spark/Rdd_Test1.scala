@@ -40,7 +40,7 @@ object Rdd_Test1 {
 
     val rdd5 = rdd1.mapPartitions(myfunc)
     rdd5.collect()
-
+    rdd5.mapToPair
     val rdd6 = rdd1.mapPartitionsWithIndex(myfunc1)
     rdd6.collect()
 

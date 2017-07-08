@@ -17,24 +17,25 @@ public class QuickSort4 {
 
     private static void quickSort(int[] arr, int left, int right) {
         if (left < right) {
-            int key = arr[left];
-            int low = left;
-            int hight = right;
-            while (low < hight) {
-                while (low < hight && key < arr[hight]) {
-                    hight--;
-                }
-                arr[low] = arr[hight];
-                while (low < hight && key > arr[low]) {
-                    low++;
-                }
-                arr[hight] = arr[low];
-            }
-
-            arr[low] = key;
-            quickSort(arr, left, low - 1);
-            quickSort(arr, low + 1, right);
+            int middle = getMiddle(arr, left, right);
+            quickSort(arr, 0, middle);
+            quickSort(arr, middle + 1, right);
         }
     }
+
+    private static int getMiddle(int[] arr, int left, int right) {
+        int tmp = arr[left];
+        while (left < right) {
+            while (left < right && arr[right] >= tmp) right--;
+            arr[left] = arr[right];
+            while (left < right && arr[left] <= tmp) left++;
+            arr[right] = arr[left];
+        }
+
+        arr[left] = tmp;
+        return right;
+    }
+
+
 
 }

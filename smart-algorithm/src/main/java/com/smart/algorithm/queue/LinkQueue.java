@@ -1,10 +1,11 @@
 package com.smart.algorithm.queue;
 
 /**
+ * 队列的链式存储结构实现
  * Created by Administrator on 2017/1/5.
  */
 public class LinkQueue<T> {
-    private class Node {
+    private class Node<T> {
         public T data;
         public Node next;
         public Node(){}
@@ -37,7 +38,7 @@ public class LinkQueue<T> {
         size++;
     }
 
-    public T dequeue() {
+    public Node<T> dequeue() {
         if (rear == front) {
             try {
                 throw new Exception("堆栈为空");
@@ -46,15 +47,11 @@ public class LinkQueue<T> {
             }
             return null;
         } else {
-            Node p = front.next;
-            T x = p.data;
-            front.next = p.next;
-            if (p.next == null) {
-                rear = front;
-            }
-            p = null;
+            Node<T> p = front;
+            front = front.next;
+            p.next = null;
             size--;
-            return x;
+            return p;
         }
     }
 
@@ -98,7 +95,6 @@ public class LinkQueue<T> {
         queue.enqueue(4);
         queue.enqueue(5);
         queue.enqueue(6);
-        String s = "aa";
         System.out.println(queue);
         System.out.println("出队："+queue.dequeue());
         System.out.println("队列长度="+queue.size());
