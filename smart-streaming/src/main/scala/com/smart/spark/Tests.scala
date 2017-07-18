@@ -5,13 +5,6 @@ package com.smart.spark
   */
 object Tests extends App {
 
-  def main(args: Array[String]): Unit = {
-    val test = new Test2("tom")
-    test.sayHello
 
-
-    val test1 = Test2("jerry")
-    test1.sayHello
-  }
 
 }

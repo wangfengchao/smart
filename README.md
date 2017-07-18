@@ -23,9 +23,15 @@ smart-scala：
     3. com.smart.spark.email:               发送异常邮件                                                  
     4. com.smart.spark.quartz:              定时任务，实时监控sparkStreaming APP Id                                                  
     5. com.smart.spark.sparkSQL:            sparkSQL测试Demo                                                  
-    6. com.smart.spark.logging:             log工具类                                                  
+    6. com.smart.spark.logging:             log工具类            
+    7. com.smart.scala.actor_test.* :       Actor测试类
+    8. com.smart.utils.Log4JTest :          Log4J按照业务存储日志测试
                                                   
 ##################################### SparkStreaming ########################################                
 smart-streaming：                                                  
     1. com.smart.apps.Base_Launcher:             基本函数测试                                                  
-    2. com.smart.apps.UpdateStateByKey_Launcher: updateStateByKey测试                                                  
+    2. com.smart.apps.UpdateStateByKey_Launcher: updateStateByKey测试 
+    3. com.smart.compress.GzipCompress:          Spark程序HDFS数据压缩，并删除HDFS源数据
+    4. com.smart.spark.Rdd_Test1:                Spark RDD 原子操作测试
+    5. com.smart.hadoop.RunJob:                  本地运行Hadoop MapReduce程序
+    6. com.smart.apps.SparkStreamingLocal:       SparkStreaming 本地运行程序

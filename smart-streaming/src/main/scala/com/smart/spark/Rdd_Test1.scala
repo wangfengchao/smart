@@ -1,5 +1,6 @@
 package com.smart.spark
 
+import org.apache.hadoop.io.compress.BZip2Codec
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.{SparkConf, SparkContext}
 
@@ -16,6 +17,7 @@ object Rdd_Test1 {
     // 1.rdd 创建操作
     val data = Array(1, 2, 3, 4, 5, 6, 7, 8, 9)
     val distData = sc.parallelize(data, 2)
+    println(distData)
 
     /* 读取hdfs数据 */
     val distFile1 = sc.textFile("hdfs://h1:8020/user/root/input01/")
@@ -40,7 +42,6 @@ object Rdd_Test1 {
 
     val rdd5 = rdd1.mapPartitions(myfunc)
     rdd5.collect()
-    rdd5.mapToPair
     val rdd6 = rdd1.mapPartitionsWithIndex(myfunc1)
     rdd6.collect()
 
