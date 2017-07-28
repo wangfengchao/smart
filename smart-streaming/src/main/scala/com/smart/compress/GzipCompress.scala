@@ -28,7 +28,7 @@ object GzipCompress {
     val sc = new SparkContext(conf)
 
     try {
-      for (i <- (198 to 297).reverse) {
+      for (i <- (199 until 299).reverse) {
         // 0. 获取HDFS文件路径
         val date = getNAgoday(i, "yyyy-MM-dd")
         val dataPath = s"${args(0)}/${date}/"
