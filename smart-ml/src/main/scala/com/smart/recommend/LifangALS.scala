@@ -3,8 +3,10 @@ package com.smart.recommend
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.mllib.recommendation.{ALS, MatrixFactorizationModel, Rating}
 import org.apache.spark.rdd.RDD
+import org.apache.spark.sql.hive.HiveContext
 import org.apache.spark.{SparkConf, SparkContext}
 
+import scala.collection.mutable
 import scala.io.Source
 
 /**
@@ -18,16 +20,19 @@ object LifangALS {
     Logger.getLogger("org.apache.eclipse.jetty.server").setLevel(Level.OFF)
 
     // 设置运行环境
-    val conf = new SparkConf().setAppName("LifangALS").setMaster("local[5]")
+    val conf = new SparkConf().setAppName("LifangALS")
     val sc = new SparkContext(conf)
+    val sqlContext = new HiveContext(sc)
 
-    // 加载用户评分数据
+    // 加载用户行为数据
     val path = System.getProperty("user.dir")
-    val myRatings = loadRatings(s"${path}/smart-ml/src/main/resources/data/recommend/lifang/test.txt")
+    //"${path}/smart-ml/src/main/resources/data/recommend/lifang/test.txt"
+    val myRatings = loadRatings(s"${args(0)}/test.txt")
     val myRatingsRDD = sc.parallelize(myRatings, 1)
 
     // 记载样本评分数据
-    val scoreDir = s"${path}/smart-ml/src/main/resources/data/recommend/lifang/score.dat"
+    // ${path}/smart-ml/src/main/resources/data/recommend/lifang/score.dat
+    val scoreDir = s"${args(0)}/score.dat"
     val scoreRDD = sc.textFile(scoreDir).map(line => {
       val fields = line.split("\u0001")
       val n = (new util.Random).nextInt(10)
@@ -37,11 +42,12 @@ object LifangALS {
     })
 
     // 加载房源数据
-    val houseDir = s"${path}/smart-ml/src/main/resources/data/recommend/lifang/house.txt"
+    // ${path}/smart-ml/src/main/resources/data/recommend/lifang/house.txt
+    val houseDir = s"${args(0)}/house.txt"
     val houses = sc.textFile(houseDir).map(line => {
-      val fields = line.split("\u0001")
-      // (houseId, districtId, cityId)
-      (fields(0).toInt, (fields(0), fields(1), fields(8)))
+      val fields = line.split("\t")
+      // (houseId, 房屋类型，面积， 区域， 价格, 卧室数，客厅数, 卫生间数，ID， 城市ID， 名称， 区域id)
+      (fields(1).toInt, (fields(1), fields(3), fields(4), fields(6), fields(7),  fields(10), fields(11), fields(12), fields(14), fields(15), fields(16), fields(17)))
     }).collect().toMap
 
     // 统计评分数量，用户数量，房源数量
@@ -62,9 +68,9 @@ object LifangALS {
     println("Training: " + numTraining + " validation: " + numValidation + " test: " + numTest)
 
     // 2. 训练不同参数下的模型，并在校验集中验证，获取最佳参数下的模型
-    val ranks = List(8, 12)
-    val lambdas = List(0.1, 10.0)
-    val numIters = List(10, 20)
+    val ranks = List(4, 8, 12, 16, 20)
+    val lambdas = List(0.01, 0.03, 0.06, 0.09, 0.12)
+    val numIters = List(10, 15, 20, 25, 30)
     var bestModel: Option[MatrixFactorizationModel] = None
     var bestValidationRmse = Double.MaxValue
     var bestRank = 0
@@ -109,16 +115,65 @@ object LifangALS {
       .predict(candidates.map((11884, _)))
       .collect
       .sortBy(-_.rating)
-      .take(10)
+      .take(100)
 
-    var i = 1
+    //推荐结果保存
+    import sqlContext.implicits._
+    sc.parallelize(recommendations).map(f => f.product)
+      .toDF.registerTempTable("tmp_recomm_table")
+
+    //用户行为加载, 插入数据
+    val userBeData = loadUserBehaviorData(s"${args(0)}/test.txt")
+    userBeData.foreach(record => {
+      val recommSQL = "insert overwrite table lifang.user_recommend  partition(guid = \""+ record._1 +"\") select * from tmp_recomm_table "
+      sqlContext.sql(recommSQL)
+    })
+
+    //用户浏览房源平均房价
+    println("User behavior :")
+    val svgPrice = userBehaviorSellPriceAvg(userBeData, sqlContext)
+    val recommendSQL = "select h.cityId, h.parentId, a.name, h.houseid, h.estateId, h.spaceArea, h.sellprice, h.livingRoomSum from lifang.user_recommend d, lifang.house_detail_info h , lifang.area_info a " +
+      " where h.houseid = d.houseid and h.parentId = a.id and h.sellprice between " + (svgPrice._1 - 70) + " and "+ (svgPrice._1 + 70) +" and h.spaceArea between "+ (svgPrice._2 - 30) +" and "+ (svgPrice._2 + 30)
+
+    val result = sqlContext.sql(recommendSQL).collect()
     println("Houses recommended for you:")
-    recommendations.foreach { r =>
-      println("%2d".format(i) + ": " + houses(r.product))
-      i += 1
-    }
+    result.foreach(row => {
+      println( s"城市ID: ${row.getInt(0)}  区域名称: ${row.getString(2)}  小区ID：${row.getInt(4)}  房源ID：${row.getInt(3)}   面积： ${row.getDouble(5)}  售价：${ row.getDouble(6)}  房间数量： ${row.getInt(7)}" )
+    })
+
+
+//    var i = 1
+//    println("Houses recommended for you:")
+//    recommendations.foreach { r =>
+//      println("%2d".format(i) + ": " + houses(r.product))
+//      i += 1
+//    }
 
     sc.stop()
+  }
+
+  /**
+    * 计算用户浏览房源的平均房价
+    * @param userBeData
+    * @return 平均房价
+    */
+  def userBehaviorSellPriceAvg(userBeData: Set[(String, String)], sqlContext: HiveContext): (Double, Double) = {
+    val houseIds = new StringBuilder()
+    userBeData.foreach(record => houseIds.append(record._2 + ","))
+    var houseIdStr = houseIds.toString()
+    houseIdStr = houseIdStr.substring(0, houseIdStr.length - 1)
+
+    val sql = "select h.cityId, h.parentId, a.name, h.houseid, h.estateId, h.spaceArea, h.sellprice, h.livingRoomSum from lifang.house_detail_info h , lifang.area_info a where  h.parentId = a.id  and h.houseid in ("+ houseIdStr +")"
+    val result = sqlContext.sql(sql).collect()
+    result.foreach(row => {
+      println( s"城市ID: ${row.getInt(0)}  区域名称: ${row.getString(2)}  小区ID：${row.getInt(4)}  房源ID：${row.getInt(3)}   面积： ${row.getDouble(5)}  售价：${ row.getDouble(6)}  房间数量： ${row.getInt(7)}" )
+    })
+    val count = result.size
+    val sumPrice =  result.map(_.getDouble(6)).reduce(_+_)
+    val sumArea = result.map(_.getDouble(5)).reduce(_+_)
+    val avgPrice = sumPrice / count
+    val avgArea = sumArea / count
+    (avgPrice, avgArea)
   }
 
   /**
@@ -147,6 +202,21 @@ object LifangALS {
     })
 
     ratings.toSeq
+  }
+
+  /**
+    * 加载用户行为数据
+    * @param path
+    * @return (guid, houseId)
+    */
+  def loadUserBehaviorData(path: String): Set[(String, String)] = {
+    val lines = Source.fromFile(path).getLines()
+    val ratings = lines.map(line => {
+      val fields = line.split("\u0001")
+      (fields(1), fields(2))
+    })
+
+    ratings.toSet
   }
 
 }

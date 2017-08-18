@@ -39,21 +39,21 @@ object UpdateStateByKey_Launcher {
 
     val paymentSum = recordStream.map(record => {
       val objJson = JSON.parseObject(record._2)
-      (objJson.getString("user"), objJson.getDouble("payment"))
+      (objJson.getString("user"), objJson.getIntValue("payment"))
     }).reduceByKey(_ + _)
 
-    paymentSum.print()
 
-    //将以前的数据和最新一分钟的数据进行求和
-    val addFunction = (currValues: Seq[Double], preVauleState: Option[Double]) => {
-      val currentSum = currValues.sum
-      val previousSum = preVauleState.getOrElse(0.0)
-      Some(currentSum + previousSum)
-    }
-
-//    val totalPayment = paymentSum.updateStateByKey[Double](addFunction)
+    val totalPayment = paymentSum.updateStateByKey[Int](updateFunc)
 
     ssc
   }
+
+  //将以前的数据和最新一分钟的数据进行求和
+  def updateFunc = (currValues : Seq[Int],preVauleState : Option[Int]) => {
+    val currSum = currValues.sum
+    val previousSum = preVauleState.getOrElse(1)
+    Some(currSum + previousSum)
+  }
+
 
 }

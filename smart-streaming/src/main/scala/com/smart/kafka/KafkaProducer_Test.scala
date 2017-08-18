@@ -16,7 +16,7 @@ object KafkaProducer_Test extends App{
 
   private val project_id = Array("wkzf", "yfyk")
   private val os_plant = Array("ios", "android")
-  private val random = new Random()
+  private val random = new Random(100)
   def projectId(): String = project_id(random.nextInt(project_id.length))
   def osPlant(): String = os_plant(random.nextInt(os_plant.length))
 
@@ -30,22 +30,19 @@ object KafkaProducer_Test extends App{
   while(true) {
     // 创建json串
     val event = new JSONObject()
-    event.put("project_id", "project3")
-    event.put("os_plant", "oplant3")
-    event.put("page_name", "2000")
-    event.put("type", "1")
-    event.put("page_param", "{\"HouseBelong\":\"0\",\"HouseID\":\"2340623\",\"Boutique\":\"1\"}")
+    event.put("ip", "10.0.18.100")
+    event.put("user_agent", "agent_aaaa")
 
     // 往kafka发送数据
-    producer.send(new ProducerRecord[String, String]("recommend_group_topic", event.toString))
-    println("Message sent: " + event.toString   +"     date :"+ dataa )
+    producer.send(new ProducerRecord[String, String]("test_pv", event.toString))
+    println("Message sent: " + event.toString   +"     date :"+ date )
 
     //每隔200ms发送一条数据
     Thread.sleep(10000)
   }
 
 
-  def dataa (): String = {
+  def date(): String = {
     val date = new Date()
     val dateFormat: SimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
     dateFormat.format(date)
