@@ -6,7 +6,6 @@ import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.hive.HiveContext
 import org.apache.spark.{SparkConf, SparkContext}
 
-import scala.collection.mutable
 import scala.io.Source
 
 /**
@@ -140,7 +139,6 @@ object LifangALS {
     result.foreach(row => {
       println( s"城市ID: ${row.getInt(0)}  区域名称: ${row.getString(2)}  小区ID：${row.getInt(4)}  房源ID：${row.getInt(3)}   面积： ${row.getDouble(5)}  售价：${ row.getDouble(6)}  房间数量： ${row.getInt(7)}" )
     })
-
 
 //    var i = 1
 //    println("Houses recommended for you:")
