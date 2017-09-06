@@ -11,9 +11,7 @@ smart-algorithm:
     9. com.smart.algorithm.lon2latDistance： 添加经纬度计算两个点的之间的距离的算法                                                         
     10.com.smart.algorithm.hanzi2pinyin： 汉字转拼音算法                                                                             
     11.com.smart.algorithm.strSimilarity： 计算两个字符串之间的相似度                                                                    
-    12.com.smart.algorithm.strSearch：字符串搜索                                                                                        
-    13.com.smart.algorithm.design： 设计模式                                                                                        
-    14. com.smart.algorithm.coor_conver： 地图坐标经纬度转换                                                                             
+    12.com.smart.algorithm.strSearch：字符串搜索                                                                                             13. com.smart.algorithm.coor_conver： 地图坐标经纬度转换                                                                             
 
                                                   
 ##################################### 爬虫 ########################################                
