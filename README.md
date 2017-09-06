@@ -7,7 +7,7 @@ smart-algorithm:
     5. com.smart.algorithm.links:    链表                                                                                         
     6. com.smart.algorithm.stack:    栈                                                                                         
     7. com.smart.algorithm.design:   设计模式                                                                                         
-    8. com.smart.algorithm.atomic:   JAVA原子类测试 
+    8. com.smart.algorithm.atomic:   JAVA原子类测试                                                                                       
     9. com.smart.algorithm.lon2latDistance： 添加经纬度计算两个点的之间的距离的算法                                                         
     10.com.smart.algorithm.hanzi2pinyin： 汉字转拼音算法                                                                             
     11.com.smart.algorithm.strSimilarity： 计算两个字符串之间的相似度                                                                    
