@@ -23,7 +23,6 @@ smart-ml：   &ensp;&ensp;&ensp;&ensp;&emsp;&ensp; &ensp;&ensp;     Spark ML模�
 14. com.smart.algorithm.coor_conver： &ensp;&ensp;&ensp;&ensp;地图坐标经纬度转换</br>
 15. com.smart.algorithm.baiduAI: &ensp;&ensp; &ensp;&ensp; &ensp;&ensp; &ensp;&ensp;百度AI，相同图片检索</br>
 16. com.smart.algorithm.https:  &ensp;&ensp;&ensp;&ensp; &ensp;&ensp; &ensp;&ensp; &ensp;&ensp;HTTPS操作</br>
-
                                                   
 ## **JAVA爬虫模块**                 
 1. 使用原始解析html页面和HttpClient方式爬虫 </br>                                                                                        
@@ -32,7 +31,6 @@ smart-ml：   &ensp;&ensp;&ensp;&ensp;&emsp;&ensp; &ensp;&ensp;     Spark ML模�
 #### **(可忽略)**
     请看epoch    python爬虫项目
                                      
-                                                  
 ## **smart-scala模块**                 
 1. com.smart.spark.KafkaOffsetLauncher: &emsp;&emsp; MySQL方式自定义管理kafka offset偏移量</br>                                                           
 2. com.smart.spark.ZKOffsetLauncher: &emsp;&emsp;&ensp;&emsp;ZK方式自定义管理kafka offset偏移量 </br>                                                 
