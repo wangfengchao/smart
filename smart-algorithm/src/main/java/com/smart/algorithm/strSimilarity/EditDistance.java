@@ -6,6 +6,7 @@ package com.smart.algorithm.strSimilarity;
  * 由于需要利用LD矩阵，故空间复杂度为O(MN)。这个在两个字符串都比较短小的情况下，能获得不错的性能。
  * 不过，如果字符串比较长的情况下，就需要极大的空间存放矩阵。
  * http://blog.csdn.net/chndata/article/details/42552971
+ *
  * 例如：两个字符串都是20000字符，则LD矩阵的大小为：20000*20000*2=800000000Byte=800MB。
  * Created by fc.w on 2017/9/6.
  */

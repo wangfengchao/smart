@@ -42,7 +42,7 @@ object Kmeans {
     val initMode = "k-means||"
     for (j <- 0 until 100) {
       numIterations += 2
-      val writer = new PrintWriter(new File(s"/opt/kmeans/data_k${numClusters}_${numIterations}.txt"))
+      val writer = new PrintWriter(new File(s"/data/kmeans/data_k${numClusters}_${numIterations}.txt"))
       writer.println(s"===============numClusters = ${numClusters}============= numIterations = ${numIterations} ============== runs = ${runs}=========================================")
       val clusters = new KMeans().setInitializationMode(initMode).setK(numClusters).setMaxIterations(numIterations).run(parsedData.map(_._4))
       writer.println(parsedData.map(v=> s"houseId: ${v._1}   townid: ${v._2}   features:${v._3}  normalization：${v._4}   belong to cluster :" +clusters.predict(v._4)).collect().mkString("\n"))
