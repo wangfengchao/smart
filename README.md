@@ -1,7 +1,7 @@
 ## **项目介绍**
 smart-algorithm：&ensp;&ensp;&emsp;数据结构和leetcode算法模块</br>
 smart-crawler： &ensp;&ensp; &ensp;&ensp;&ensp;Java 语言爬虫模块 (可忽略)</br>
-smart-magic： &ensp;&ensp;&ensp;&ensp;&emsp; Java 语言爬虫模块 __(可忽略)</br>
+smart-magic： &ensp;&ensp;&ensp;&ensp;&emsp; Java 语言爬虫模块 (可忽略)</br>
 smart-scala： &ensp;&ensp; &ensp;&ensp;&ensp;&ensp;&ensp;Spark Demo 模块</br>
 smart-streaming： &ensp;&ensp;&emsp;Spark Streaming模块  </br>
 smart-ml：   &ensp;&ensp;&ensp;&ensp;&emsp;&ensp; &ensp;&ensp;     Spark ML模块</br>

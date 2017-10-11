@@ -18,7 +18,7 @@ public class TestMain {
         httpClientUtil = new HttpClientUtil();
     }
 
-    public void test() throws IOException {
+    public void test() throws Exception {
         String url = "https://aip.baidubce.com/rest/2.0/realtime_search/same/add";
         String accessToken = "24.732bef029fee60461d5786751ea487ad.2592000.1507342455.282335-10101665";
         String appid = "10101665";
@@ -32,7 +32,7 @@ public class TestMain {
         System.out.println("result:"+httpOrgCreateTestRtn);
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
         TestMain main = new TestMain();
         main.test();
     }

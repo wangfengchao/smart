@@ -7,12 +7,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by fc.w on 2017/9/7.
+ * Created by fc.w on 2017/10/10.
  */
-public class ImageDel {
+public class SimilarImgDel {
 
     public static String imgdel(String imgFile) {
-        String url = "https://aip.baidubce.com/rest/2.0/realtime_search/same_hq/delete";
+        String url = "https://aip.baidubce.com/rest/2.0/image-classify/v1/realtime_search/similar/delete";
         String accessToken = "24.f79e95cabe15b9c4589b0f98e7c65517.2592000.1510120255.282335-10101665";
         url += "?access_token=" + accessToken;
         String appid = "10101665";
@@ -43,7 +43,7 @@ public class ImageDel {
     }
 
     public static void main(String[] args) {
-        imgdel("C:\\Users\\Administrator\\Desktop\\fangduo");
+        imgdel("C:\\Users\\Administrator\\Desktop\\zhongyuan");
     }
 
 }

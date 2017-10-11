@@ -12,6 +12,10 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -32,7 +36,7 @@ public class HttpClientUtil {
      * @throws ParseException
      * @throws IOException
      */
-    public static String sendPOST(String url, Map<String,String> map,String encoding) throws ParseException, IOException {
+    public static String sendPOST(String url, Map<String,String> map,String encoding) throws ParseException, IOException, URISyntaxException {
         String body = "";
 
         // 创建httpclient对象
