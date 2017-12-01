@@ -16,8 +16,8 @@ public class QuickSort2 {
     public static void sort(int[] arr, int lo, int hi) {
         if (lo < hi) {
             int k = partition(arr, lo, hi);
-            sort(arr, k + 1, hi);
             sort(arr, lo, k - 1);
+            sort(arr, k + 1, hi);
         }
     }
 

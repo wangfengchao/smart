@@ -15,3 +15,6 @@ smart-crawler/*.iml
 
 smart-magic/target/
 smart-magic/*.iml
+
+smart-java/target
+smart-java/*.iml

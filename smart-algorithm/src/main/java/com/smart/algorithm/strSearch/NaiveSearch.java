@@ -26,7 +26,7 @@ public class NaiveSearch {
     }
 
     public static void main(String[] args) {
-        System.out.println(naiveSearch("helloworld", "wol"));
+        System.out.println(naiveSearch("helloworld", "wo"));
     }
 
 }

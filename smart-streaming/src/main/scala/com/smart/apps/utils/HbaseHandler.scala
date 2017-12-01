@@ -1,7 +1,6 @@
 package com.smart.apps.utils
 
 import org.apache.hadoop.hbase.HBaseConfiguration
-import org.apache.hadoop.hbase.client.{Connection, ConnectionFactory}
 
 /**
   * Created by fukuiwei on 2017/2/27.
@@ -17,9 +16,9 @@ object HbaseHandler {
   myConf.set("hbase.zookeeper.property.clientPort", port)
   myConf.set("hbase.defaults.for.version.skip", "true")
 
-  def getConn(): Connection = {
-    val connn = ConnectionFactory.createConnection(myConf)
-    connn
-  }
+//  def getConn(): Connection = {
+//    val connn = ConnectionFactory.createConnection(myConf)
+//    connn
+//  }
 
 }
