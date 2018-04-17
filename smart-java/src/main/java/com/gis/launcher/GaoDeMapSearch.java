@@ -86,17 +86,20 @@ public class GaoDeMapSearch {
                 } else if (levelStr.equals("street")) {
                     level = 5;
                 }
-                // 添加数据
-                db.addData(citycode, adCode, name, level, lon, lat);
-                // 下级行政区列表
-                JSONArray districtsJSON = obj.getJSONArray("districts");
-                // 递归解析数据
-                if (districtsJSON.size() > 0) {
-                    jsonParse(districtsJSON);
-                }
+                int count = db.isData(citycode, adCode, name, level);
+                if (count == 0) {
+                    // 添加数据
+                    db.addData(citycode, adCode, name, level, lon, lat);
+                    // 下级行政区列表
+                    JSONArray districtsJSON = obj.getJSONArray("districts");
+                    // 递归解析数据
+                    if (districtsJSON.size() > 0) {
+                        jsonParse(districtsJSON);
+                    }
 
-                if (level == 2) {
-                    getStreetData(name, 3);
+                    if (level == 2) {
+                        getStreetData(name, 3);
+                    }
                 }
 
             }

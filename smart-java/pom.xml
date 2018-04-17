@@ -36,5 +36,10 @@
             <artifactId>pinyin4j</artifactId>
             <version>2.5.1</version>
         </dependency>
+        <dependency>
+            <groupId>com.smart</groupId>
+            <artifactId>smart-magic</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 </project>

@@ -1,6 +1,7 @@
 package com.gis.dao;
 
 import com.gis.tools.MySqlConnectionPool;
+import com.gis.vo.DistrictVO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,23 +20,24 @@ public class GaoDeMapDataDB {
 
     /**
      * 更新边界
-     * @param name
+     * @param id
      * @param polyline
      */
-    public void updatePolyline(String name, String polyline) {
+    public void updatePolyline(int id, String polyline) {
         // 创建数据库连接库对象
         MySqlConnectionPool connPool = new MySqlConnectionPool();
         Connection conn = null;
         PreparedStatement pstmt = null;
         try {
             connPool.createPool();
-            String sql = "UPDATE dict_district  SET `polyline` = ? WHERE `name` = ? ";
+            String sql = "UPDATE dict_district  SET `polyline` = ? WHERE id = ? ";
             conn = connPool.getConnection();
             pstmt = (PreparedStatement)conn.prepareStatement(sql);
             pstmt.setString(1, polyline);
-            pstmt.setString(2, name);
-            pstmt.executeUpdate();
-
+            pstmt.setInt(2, id);
+            int re = pstmt.executeUpdate();
+            System.out.println("更新成功！: " + re);
+            conn.commit();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -55,7 +57,7 @@ public class GaoDeMapDataDB {
      * 获取城市信息
      * @return
      */
-   public Map<Integer, String> getCityData() {
+   public Map<Integer, String> getCityData(){
        Map<Integer, String> names = new HashMap<Integer, String>();
         // 创建数据库连接库对象
         MySqlConnectionPool connPool = new MySqlConnectionPool();
@@ -91,20 +93,24 @@ public class GaoDeMapDataDB {
      * 获取省，市，区 name
      * @return
      */
-   public List<String> getData() {
-        List<String> nameList = new ArrayList<String>();
-        // 创建数据库连接库对象
+   public List<DistrictVO> getData() {
+       List<DistrictVO> result = new ArrayList<DistrictVO>();
+       // 创建数据库连接库对象
         MySqlConnectionPool connPool = new MySqlConnectionPool();
         Connection conn = null;
         PreparedStatement pstmt = null;
         try {
             connPool.createPool();
-            String sql = "SELECT `name` FROM dict_district WHERE `level` in (2, 3, 4) AND polyline IS  NULL ";
+            String sql = "SELECT id, citycode, `name` FROM dict_district WHERE `level` in (2, 3, 4) AND polyline IS NULL";
             conn = connPool.getConnection();
             pstmt = (PreparedStatement)conn.prepareStatement(sql);
             ResultSet results = pstmt.executeQuery();
             while (results.next()) {
-                nameList.add(results.getString("name"));
+                DistrictVO vo = new DistrictVO();
+                vo.setId(results.getInt("id"));
+                vo.setCityCode(results.getString("citycode"));
+                vo.setName(results.getString("name"));
+                result.add(vo);
             }
 
         } catch (Exception e) {
@@ -120,7 +126,40 @@ public class GaoDeMapDataDB {
             connPool.returnConnection(conn); // 连接使用完后释放连接到连接池
         }
 
-        return nameList;
+        return result;
+    }
+
+    public int isData(String cityCode, String adCode, String name, int level) {
+        // 创建数据库连接库对象
+        MySqlConnectionPool connPool = new MySqlConnectionPool();
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        int count = 0;
+        try {
+            connPool.createPool();
+            String sql = "SELECT count(*) as count FROM dict_district WHERE citycode = ? and adcode = ? and `name` = ?";
+            conn = connPool.getConnection();
+            pstmt = (PreparedStatement) conn.prepareStatement(sql);
+            pstmt.setString(1, cityCode);
+            pstmt.setString(2, adCode);
+            pstmt.setString(3, name);
+            ResultSet results = pstmt.executeQuery();
+            while (results.next()) {
+                count = results.getInt("count");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (pstmt != null) pstmt.close();
+                if (conn != null) conn.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            connPool.returnConnection(conn); // 连接使用完后释放连接到连接池
+
+        }
+        return count;
     }
 
     /**

@@ -207,7 +207,7 @@ public class PositionTransformTool {
     }
 
     public static void main(String[] args) {
-        System.out.println( gcj2bd( "121.449646,31.275364" ) );
+        System.out.println(bd2gcj("121.356828,30.737108"));
         //121.51951284749504,31.253706715178215
     }
 }

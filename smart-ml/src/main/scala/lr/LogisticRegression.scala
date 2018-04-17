@@ -1,14 +1,14 @@
-package com.smart.regression
+package lr
 
 import org.apache.log4j.{Level, Logger}
-import org.apache.spark.mllib.classification.LogisticRegressionWithSGD
+import org.apache.spark.mllib.classification.{LogisticRegressionWithLBFGS, LogisticRegressionWithSGD}
 import org.apache.spark.mllib.evaluation.MulticlassMetrics
 import org.apache.spark.mllib.regression.LabeledPoint
 import org.apache.spark.mllib.util.MLUtils
 import org.apache.spark.{SparkConf, SparkContext}
 
 /**
-  * Created by fc.w on 2017/6/23.
+  * Created by fc.w on 2018/3/1.
   */
 object LogisticRegression {
 
@@ -19,7 +19,7 @@ object LogisticRegression {
     Logger.getRootLogger.setLevel(Level.WARN)
 
     val path = System.getProperty("user.dir")
-    val data = MLUtils.loadLibSVMFile(sc, path + "/smart-ml/src/main/resources/data/sample_libsvm_data.txt")
+    val data = MLUtils.loadLibSVMFile(sc, path + "/smart-ml/src/main/scala/lr/data.txt")
     data.take(1).foreach(println)
 
     // 2.0 样本数据划分训练样本和测试样本
@@ -31,7 +31,8 @@ object LogisticRegression {
     val numIterations = 100
     val stepSize = 1
     val miniBatchFraction = 0.5
-    val model = LogisticRegressionWithSGD.train(training, numIterations, stepSize, miniBatchFraction)
+//    val model = LogisticRegressionWithSGD.train(training, numIterations, stepSize, miniBatchFraction)
+    val model = new LogisticRegressionWithLBFGS().setNumClasses(2).run(training)
     println(model.weights)
     println(model.intercept)
 
@@ -53,9 +54,6 @@ object LogisticRegression {
     val precision = matrics.precision
     println("Precision: " + precision)
 
-    // 6.0 保存模型
-//    val ModelPath = "hdfs://h1:8020/user/root/model/logistic_regression_model"
-//    model.save(sc, ModelPath)
 
   }
 

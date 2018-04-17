@@ -1,6 +1,7 @@
 package com.gis.baiduAI;
 
-import com.smart.algorithm.https.HttpClientUtil;
+
+import com.gis.https.HttpClientUtil;
 
 import java.io.File;
 import java.util.HashMap;

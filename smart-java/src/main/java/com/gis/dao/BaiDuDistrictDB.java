@@ -9,6 +9,7 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -17,6 +18,85 @@ import java.util.Map;
  * Created by fc.w on 2017/11/30.
  */
 public class BaiDuDistrictDB {
+
+    /**
+     * 更新板块边界
+     * @param id
+     * @param polyline
+     * @param gdPolyline
+     */
+    public int updatePolylineByLianJia(int id, String polyline, String gdPolyline, int source) {
+        // 创建数据库连接库对象
+        MySqlConnectionPool connPool = new MySqlConnectionPool();
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        int result = 0;
+        try {
+            connPool.createPool();
+            String sql = "UPDATE dict_district_baidu  SET `polyline` = ?, gdPolyline = ?, updateTime = sysdate(), status = 1, source = ? WHERE id = ? ";
+            conn = connPool.getConnection();
+            pstmt = (PreparedStatement)conn.prepareStatement(sql);
+            pstmt.setString(1, polyline);
+            pstmt.setString(2, gdPolyline);
+            pstmt.setInt(3, source);
+            pstmt.setInt(4, id);
+            result = pstmt.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (pstmt != null) pstmt.close();
+                if (conn != null) conn.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            connPool.returnConnection(conn); // 连接使用完后释放连接到连接池
+        }
+
+        return result;
+    }
+
+    /**
+     * 判断表中是否有数据
+     * @param cityName
+     * @return
+     */
+    public int isDistrictInfo(String cityName, String districtName) {
+        // 创建数据库连接库对象
+        MySqlConnectionPool connPool = new MySqlConnectionPool();
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        int result = 0;
+
+        try {
+            connPool.createPool();
+            conn = connPool.getConnection();
+            String sql = "SELECT id FROM dict_district_baidu WHERE status = 2 AND cityName LIKE ? AND districtName LIKE ?";
+            pstmt = (PreparedStatement)conn.prepareStatement(sql);
+            pstmt.setString(1, cityName + "%");
+            pstmt.setString(2, districtName + "%");
+            ResultSet resultSet = pstmt.executeQuery();
+            while (resultSet.next()) {
+                result = resultSet.getInt("id");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (pstmt != null) pstmt.close();
+                if (conn != null) conn.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            connPool.returnConnection(conn); // 连接使用完后释放连接到连接池
+        }
+
+        return result;
+    }
 
     /**
      * 获取板块uid
