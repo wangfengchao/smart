@@ -203,6 +203,10 @@ public class BinTreeTraverse {
         }
     }
 
+    /**
+     * 中序遍历 非递归
+     * @param root
+     */
     public static void nonInOrder(Node root) {
         Stack<Node> stack = new Stack<Node>();
         while(root != null || !stack.isEmpty()) {
@@ -217,58 +221,86 @@ public class BinTreeTraverse {
         }
     }
 
+    /**
+     * 后序遍历 非递归
+     * 双栈法
+     * @param root
+     */
+    public static void postOrder2(Node root) {
+        Stack<Node> stack = new Stack<Node>();
+        Stack<Node> output = new Stack<Node>();
+        Node node = root;
+        while (node != null || !stack.isEmpty()) {
+            if (node != null) {
+                stack.push(node);
+                output.push(node);
+                node = node.rightNode;
+            } else {
+                node = stack.pop();
+                node = node.leftNode;
+            }
+        }
+
+        while (output.size() > 0) {
+            Node n = output.pop();
+            System.out.print(n.data + "\t");
+        }
+    }
+
     public static void main(String[] args) {
         BinTreeTraverse bt = new BinTreeTraverse();
         bt.createTree();
         Node node = nodeList.get(0);
-        System.out.println("================前序遍历==============");
-        preOrderTraverse(node);
-        System.out.println();
-        System.out.println("================中序遍历==============");
-        inOrderTraverse(node);
-        System.out.println();
+//        System.out.println("================前序遍历==============");
+//        preOrderTraverse(node);
+//        System.out.println();
+//        System.out.println("================中序遍历==============");
+//        inOrderTraverse(node);
+//        System.out.println();
         System.out.println("================后序遍历==============");
         postOrderTraverse(node);
         System.out.println();
-        System.out.println("================树深度================");
-        System.out.println(getDepthRecursion(node));
-        System.out.println("================树反转================");
-        invertTree(node);
-        System.out.println();
-        System.out.println("节点数：" + size(node));
-        System.out.println();
-        System.out.println("==============前序遍历 非递归=============");
-        nonRecInOrder(node);
-        System.out.println();
-        System.out.println("==============中序遍历 非递归=============");
-        nonInOrder(node);
-        System.out.println();
-        System.out.println("==============判断是否是平衡树=============");
-        System.out.println(isBalanced(node));
-        System.out.println();
-        System.out.println("==============Binary Tree Paths 二叉树路径=============");
-        List<String> paths = binaryTreePaths(node);
-        for (String path : paths) {
-            System.out.print(path + "\t");
-        }
-        System.out.println("\n");
-        System.out.println("==============Minimum Depth of Binary Tree=============");
-        System.out.println("Minimum Depth of Binary Tree -- " + minDepth(node));
-        System.out.println();
-        System.out.println("==============Binary Tree Level Order Traversal=============");
-        List<List<Integer>> result = TreeLevel.levelOrder(node);
-        for (List<Integer> ele : result) {
-            System.out.println(ele);
-        }
-        System.out.println();
-        System.out.println("==============Binary Tree Level Order Traversal  DFS=============");
-        ArrayList<ArrayList<Integer>> re = TreeLevel.levelOrderDFS(node);
-        TreeLevel.reverseList(re);
-        for (List<Integer> ele : re) {
-            System.out.println(ele);
-        }
-        System.out.println("\n ================ 二叉树的层次遍历================");
-        TreeLevel.levelIterator(node);
+        postOrder2(node);
+//        System.out.println();
+//        System.out.println("================树深度================");
+//        System.out.println(getDepthRecursion(node));
+//        System.out.println("================树反转================");
+//        invertTree(node);
+//        System.out.println();
+//        System.out.println("节点数：" + size(node));
+//        System.out.println();
+//        System.out.println("==============前序遍历 非递归=============");
+//        nonRecInOrder(node);
+//        System.out.println();
+//        System.out.println("==============中序遍历 非递归=============");
+//        nonInOrder(node);
+//        System.out.println();
+//        System.out.println("==============判断是否是平衡树=============");
+//        System.out.println(isBalanced(node));
+//        System.out.println();
+//        System.out.println("==============Binary Tree Paths 二叉树路径=============");
+//        List<String> paths = binaryTreePaths(node);
+//        for (String path : paths) {
+//            System.out.print(path + "\t");
+//        }
+//        System.out.println("\n");
+//        System.out.println("==============Minimum Depth of Binary Tree=============");
+//        System.out.println("Minimum Depth of Binary Tree -- " + minDepth(node));
+//        System.out.println();
+//        System.out.println("==============Binary Tree Level Order Traversal=============");
+//        List<List<Integer>> result = TreeLevel.levelOrder(node);
+//        for (List<Integer> ele : result) {
+//            System.out.println(ele);
+//        }
+//        System.out.println();
+//        System.out.println("==============Binary Tree Level Order Traversal  DFS=============");
+//        ArrayList<ArrayList<Integer>> re = TreeLevel.levelOrderDFS(node);
+//        TreeLevel.reverseList(re);
+//        for (List<Integer> ele : re) {
+//            System.out.println(ele);
+//        }
+//        System.out.println("\n ================ 二叉树的层次遍历================");
+//        TreeLevel.levelIterator(node);
 
     }
 
